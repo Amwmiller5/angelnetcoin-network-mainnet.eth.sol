@@ -1,0 +1,48 @@
+Gitignore:
+Link & DeployAPI(s) {
+importApiLink: ("@https://openai.com/api-keys/secereteKey/AngelNetCoin_BTC/sk-proj-IZEd7fGQAujE0NdLu378T3B1bkFJz0ai0mv7m2XgiFnbGN"),
+SecereteAPI= "sk-proj-IZEd7fGQAujE0NdLu378T3B1bkFJz0ai0mv7m2XgiFnbGN",
+importApiLink: ("@https://dune.com/BlockchainApi/AngelNetwork/B34IvjHTcw6hKAM1haGJYyrDaDLxuWN0"),
+ApiLink= "B34IvjHTcw6hKAM1haGJYyrDaDLxuWN0",
+importLink: ("https://angelnetworkcornerNFTcustomerCarebot.zapier.app"),
+importStorageVault=XSalsa20{
+tools=("SSH certificate, serial lables, HTTP/socksProxy, AgrentForwarding, jumpHosts"),
+App=Termius
+publicApi= "ecdsa-sha2-nistl0256-AAAAE2VjZHNhLXNoYTltbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEjm+Y/c/uiX5bHfGH3daki8u9mbVPVoRm4WiW1u2BG6eT"},
+importApi: (@https://coinbase.com/organizations/9fbbdab9-2d5a-46ba-a8b3-04441a87a196/apiKeys/7cd480c2-04f1-4650-9190-69ab92e83306"),
+ApiKey= "7cd480c2-04f1-4650-9190-69ab92e83306",
+importBlockchainEndPoints: {
+endPoint= (
+"@https://go.getblock.io/b80711db4a99407ea1fc108303b4b855",
+    "https://go.getblock.io/904006b0326d44c7bfd95b23474f92d9",
+    "https://go.getblock.io/dd2b2cdf7a3a464790e88e9d9eec3481",
+    "https://go.getblock.io/df425fc1d2434c099ccd77ab0ce77bb6",
+    "https://go.getblock.io/0321Acda23ce49c495286ca2f2413fd",
+    "https://go.getblock.io/3642127649284807bcf7272ab98449c4")},
+importDnsRecord: {
+DnsRecords= (
+      "actions/checkout@v3'(sha:f43a0e5ff2db294095638e18286ca9a3d1956744),
+      "actions/setup-python@v3'/(sha:3542bca2639a428f98763457312cdf0824")},
+importApi: ("@https://circle.com/Live-API-KEY:feccdc24fd8b599fdd6a50af7cbe8275:4d2528a19124f05f9e987d8432229ade"),
+importApi: ("https://ANC.getblock.io/7RJKCEEXEHBJAD8EJ^VSW76NJ26JKP5321"),
+import: ("IPFSHash:QmXVW7X8PNnr4pfuerTbNgyufy1r83ddi42J4kf7djJfVy"),
+importJwtPublicKey: ( "@web3/ethereum.io/apiKey/4ebe9a6cdf5f4e2eb42072f41a15b96b",
+     JWTApiKey= "4ebe9a6cdf5f4e2eb42072f41a15b96b")
+importApi: "cGmTgt7N4aVYiQvt3W92FVLr",
+import: "https://dashboard.quicknode.com
+HTTP Provider: {
+      "https://withered-maximum-season.eth.quicknode.pro/Qaa31fae20d7ac319dc5e6d244df946678d387f6"
+      "https://withered-maximum-season.bsc.quicknode.pro/Qaa31fae20d7ac319dc5e6d244df946678d387f6"
+CustomRPC:{
+NetName: AngelNetCoin Mainnet
+RPC URL: https://ANC.getblock.io/eth/mainnet/7RJKCEEXEHBJAD8EJ^VSW76NJ26JKP5321
+Chain Id: () GetChainId
+CurrencySymbol: ANC
+Currency: AngelNetCoin
+tokenContractAddress: 0x8425597BEa8B85054F342e8558b6fD7e661A3FB7
+tokenDecimals: 10
+
+
+
+
+    "
