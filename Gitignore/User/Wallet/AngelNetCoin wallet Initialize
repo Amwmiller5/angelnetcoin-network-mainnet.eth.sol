@@ -1,0 +1,19 @@
+Title: "AngelNetCoin_Mainnet_Wallet"
+import { Core } from '@walletconnect/core'
+import { Web3Wallet } from '@walletconnect/web3wallet'
+
+const core = new Core({
+  projectId: process.env.c062ba7e-1543-4922b0e1-64fc014e20f5@https://coinbase.com
+})
+
+const web3wallet = await Web3Wallet.init({
+  core, // <- pass the shared `core` instance
+  metadata: {
+    name: 'AngelNetCoin_Mainnet_App',
+    description: 'AngelNetCoin Mainnet Created By AngelNetwork/ A Network that supports nonprofts worldwide. in this mainnet you have access to the Official nonprofit Coin AngelNetCoin and NFTs that include Contests for users to win AngelNetCoin. AngelNetCoin Value is 10 AngelNetCoin, ANC= 0.5 Ethereum, ETH, AngelNetCoin has 10 decimals and all proceeds go to our nonprofits, you can stake your ANC or Trade it or sell it. You can join our network and contribute in other ways by sending an email to 'the.angelnetworkcorner@gmail.com' You can open a ANC wallet or other wallet to sign commits you can ceck your token values and after a month of ownership of the Official nonprofit coin you will start earning intrest on your token holdings',
+    url: 'www.walletconnect.com',
+    icons: []
+  }
+})
+}
+}
