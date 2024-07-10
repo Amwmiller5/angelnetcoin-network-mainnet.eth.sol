@@ -1,0 +1,49 @@
+Field	Description	Required
+Name
+The name to display in the explorer
+yes
+Description
+A short description explaining your project (dapp/wallet)
+yes
+Type
+Whether your project is a dapp or a wallet
+yes
+Category
+Appropriate category for your project. This field is dependent on the type of your project
+yes
+Homepage
+The URL of your project
+yes
+Web App
+The URL of your web app. This field is only applicable for dapps
+yes
+Supports Sign v2
+Indicates v2 support for WalletConnect Sign SDK. Detailed testing instructions are provided in the explorer submission form
+yes
+Supports Auth v1
+Indicates v1 support for WalletConnect Auth SDK. Detailed testing instructions are provided in the explorer submission form
+yes
+Chains
+Chains supported by your project
+yes
+Logo
+The logo of your project. Further requirements are provided in the explorer submission form
+yes
+Testing Instructions
+Instructions on how to test your WalletConnect Integration
+yes
+Download Links
+Links to download your project (if applicable)
+no
+Mobile Linking
+Required for mobile wallets targeting Web3modal. Deep Link is recommended over Universal Link
+no
+Desktop Linking
+Required for desktop wallets targeting Web3modal.
+no
+Injected Wallet Identifiers
+Required for injected wallets targeting Web3modal. RDNS (from EIP-6963 metadata) is recommended over Provider Flags(Legacy)
+no
+Metadata
+User facing UI metadata for your project. Only Short Name is required.
+no
