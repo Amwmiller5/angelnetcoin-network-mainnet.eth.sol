@@ -1,0 +1,252 @@
+// util params
+{
+  proposal: ProposalTypes.Struct; // the proposal received by `.on("session_proposal")`
+  supportedNamespaces: Record< // your Wallet's supported namespaces
+    string, // the supported namespace key e.g. eip155
+    {
+      chains: string[]; // your supported chains in CAIP-2 format e.g. ["eip155:1", "eip155:2", ...]
+      methods: string[]; // your supported methods e.g. ["personal_sign", "eth_sendTransaction"]
+      events: string[]; // your supported events e.g. ["chainChanged", "accountsChanged"]
+      accounts: string[] // your user's accounts in CAIP-10 format e.g. ["eip155:1:0x453d506b1543dcA64f57Ce6e7Bb048466e85e228"]
+      }
+  >;
+};
+
+{ExampleUsage/testRun}
+// import the builder util
+import { Web3Wallet, Web3WalletTypes } from '@walletconnect/web3wallet'
+import { buildApprovedNamespaces, getSdkError } from '@walletconnect/utils'
+
+async function onSessionProposal({ id, params }: Web3WalletTypes.SessionProposal){
+  try{
+    // ------- namespaces builder util ------------ //
+    const approvedNamespaces = buildApprovedNamespaces({
+      proposal: params,
+      supportedNamespaces: {
+        eip155: {
+          chains: ['eip155:1', 'eip155:137'],
+          methods: ['eth_sendTransaction', 'personal_sign'],
+          events: ['accountsChanged', 'chainChanged'],
+          accounts: [
+            'eip155:1:0xab16a96d359ec26a11e2c2b3d8f8b8942d5bfcdb',
+            'eip155:137:0xab16a96d359ec26a11e2c2b3d8f8b8942d5bfcdb'
+          ]
+        }
+      }
+    })
+    // ------- end namespaces builder util ------------ //
+
+    const session = await web3wallet.approveSession({
+      id,
+      namespaces: approvedNamespaces
+    })
+  }catch(error){
+    // use the error.message to show toast/info-box letting the user know that the connection attempt was unsuccessful
+    ....
+    await web3wallet.rejectSession({
+      id: proposal.id,
+      reason: getSdkError("USER_REJECTED")
+    })
+  }
+}
+{endExample/testRun}
+}
+
+web3wallet.on('session_proposal', onSessionProposal)
+}
+}
+{
+// ------- namespaces builder util ------------ //
+const approvedNamespaces = buildApprovedNamespaces({
+    proposal: params,
+    supportedNamespaces: {
+        eip155: {...},
+        cosmos: {...},
+        near: {...}
+    },
+});
+// ------- end namespaces builder util ------------ //
+}
+{EVM_Methods_Events}
+{
+{
+  //...
+  methods: [
+    "eth_accounts",
+    "eth_requestAccounts",
+    "eth_sendRawTransaction",
+    "eth_sign",
+    "eth_signTransaction",
+    "eth_signTypedData",
+    "eth_signTypedData_v3",
+    "eth_signTypedData_v4",
+    "eth_sendTransaction",
+    "personal_sign",
+    "wallet_switchEthereumChain",
+    "wallet_addEthereumChain",
+    "wallet_getPermissions",
+    "wallet_requestPermissions",
+    "wallet_registerOnboarding",
+    "wallet_watchAsset",
+    "wallet_scanQRCode",
+    "wallet_sendCalls",
+    "wallet_getCallsStatus",
+    "wallet_showCallsStatus",
+    "wallet_getCapabilities",
+  ],
+  events: [
+    "chainChanged",
+    "accountsChanged",
+    "message",
+    "disconnect",
+    "connect",
+  ]
+}
+}
+{
+{SessionApproval}}
+{
+web3wallet.on('session_proposal', async proposal => {
+  const session = await web3wallet.approveSession({
+    id: proposal.id,
+    namespaces
+  })
+})
+await web3wallet.pair({ uri })
+}
+}
+{SessionRejected}
+{
+web3wallet.on('session_proposal', async proposal => {
+  await web3wallet.rejectSession({
+    id: proposal.id,
+    reason: getSdkError('USER_REJECTED_METHODS')
+  })
+})
+}
+{ResponSessionRequest}}
+{
+web3wallet.on('session_request', async event => {
+  const { topic, params, id } = event
+  const { request } = params
+  const requestParamsMessage = request.params[0]
+
+  // convert `requestParamsMessage` by using a method like hexToUtf8
+  const message = hexToUtf8(requestParamsMessage)
+
+  // sign the message
+  const signedMessage = await wallet.signMessage(message)
+
+  const response = { id, result: signedMessage, jsonrpc: '2.0' }
+
+  await web3wallet.respondSessionRequest({ topic, response })
+})
+}
+}
+{RejectedsessionResponce}
+{
+const response = {
+  id,
+  jsonrpc: '2.0',
+  error: {
+    code: 5000,
+    message: 'User rejected.'
+  }
+}
+{IdFromRequestPayload}
+{
+import { formatJsonRpcResult } from '@walletconnect/jsonrpc-utils'
+
+const signature = await cryptoWallet.signTransaction(signTransaction)
+const response = await web3wallet.respondSessionRequest({
+  topic: session.topic,
+  response: formatJsonRpcResult(id, signature)
+})
+}
+{addNewAccountToExistingSession}
+{
+const namespaces = session.namespaces
+const accounts = [
+  'eip155:1:0xab16a96d359ec26a11e2c2b3d8f8b8942d5bfcdb',
+  'eip155:1:0x1234567890123456789012345678901234567890'
+]
+const updatedNamespaces = {
+  ...namespaces,
+  eip155: {
+    ...namespaces.eip155,
+    accounts
+  }
+}
+const { acknowledged } = await web3wallet.updateSession({
+  topic: session.topic,
+  namespaces: updatedNamespaces
+})
+// If you wish to be notified when the dapp acknowledges the update.
+// note that if the dapp is offline `acknowledged` will not resolve until it comes back online
+await acknowledged()
+}
+}
+{AddNewChainToExistingSession}
+{
+const namespaces = session.namespaces
+const chains = ['eip155:1', 'eip155:137']
+const accounts = [
+  'eip155:1:0xab16a96d359ec26a11e2c2b3d8f8b8942d5bfcdb',
+  'eip155:137:0x1234567890123456789012345678901234567890'
+]
+const updatedNamespaces = {
+  ...namespaces,
+  eip155: {
+    ...namespaces.eip155,
+    accounts,
+    chains
+  }
+}
+await web3wallet.updateSession({ topic: session.topic, namespaces: updatedNamespaces })
+}
+}
+{ExtendingSession}
+{
+const { acknowledged } = await web3wallet.extendSession({ topic })
+// if you wish to be notified when the dapp acks the extend
+// note that if the dapp is offline `acknowledged` will not resolve until it comes back online
+await acknowledged()
+}
+}
+{DisconnectSession}
+{
+await web3wallet.disconnectSession({
+  topic,
+  reason: getSdkError('USER_DISCONNECTED')
+})
+}
+}
+{EmmitSessionEvent}
+{
+await web3wallet.emitSessionEvent({
+  topic,
+  event: {
+    name: 'accountsChanged',
+    data: ['0xab16a96D359eC26a11e2C2b3d8f8B8942d5Bfcdb']
+  },
+  chainId: 'eip155:1'
+})
+}
+}
+{SessionEvent}
+{
+await web3wallet.emitSessionEvent({
+  topic,
+  event: {
+    name: 'chainChanged',
+    data: 1
+  },
+  chainId: 'eip155:1'
+})
+}
+
+
+
+
+
+
