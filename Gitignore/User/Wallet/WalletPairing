@@ -1,0 +1,65 @@
+const uri = 'xxx'; // pairing uri
+try {
+    await web3Wallet.pair({ uri });
+} catch (error) {
+    // some error happens while pairing - check Expected errors section
+}
+}
+{PairingExpired}
+{
+core.pairing.events.on("pairing_expire", (event) => {
+    // pairing expired before user approved/rejected a session proposal
+    const { topic } = topic;
+});
+}
+{UserActionApproval}
+{
+try {
+        await web3Wallet.approveSession(params);
+        // update UI -> remove the loader
+    } catch (error) {
+        // present error to the user
+    }
+}
+{RejectingSession}
+{
+ try {
+        await web3Wallet.rejectSession(params);
+        // update UI -> remove the loader
+    } catch (error) {
+        // present error to the user
+    }
+}
+{SessionProposalExpired}
+{
+web3wallet.on("proposal_expire", (event) => {
+    // proposal expired and any modal displaying it should be removed
+    const { id } = event;
+});
+}
+{UserActionFeedback}
+{
+ try {
+        await web3Wallet.respondSessionRequest(params);
+        // update UI -> remove the loader
+    } catch (error) {
+        // present error to the user
+    }
+}
+{SessionRequestExpired}
+{
+web3wallet.on("session_request_expire", (event) => {
+    // request expired and any modal displaying it should be removed
+    const { id } = event;
+});
+}
+{WebSocketConnectState}
+{
+core.relayer.on("relayer_connect", () => {
+    // connection to the relay server is established
+})
+
+core.relayer.on("relayer_disconnect", () => {
+// connection to the relay server is lost
+})
+}
