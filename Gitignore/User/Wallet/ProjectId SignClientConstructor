@@ -1,0 +1,4 @@
+import SignClient from '@walletconnect/sign-client'
+const signClient = await SignClient.init({
+  projectId: 'c062ba7e-1543-4922-b0e1-64fc014e20f5'
+})
