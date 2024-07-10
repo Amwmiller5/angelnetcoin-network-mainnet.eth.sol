@@ -1,0 +1,62 @@
+createWeb3Modal({
+  //..
+  siweConfig
+})
+
+interface SIWEConfig {
+  // Required
+  getNonce: () => Promise<string>
+  createMessage: (args: SIWECreateMessageArgs) => string
+  verifyMessage: (args: SIWEVerifyMessageArgs) => Promise<boolean>
+  getSession: () => Promise<SIWESession | null>
+  signOut: () => Promise<boolean>
+
+  // Optional
+  onSignIn?: (session?: SIWESession) => void
+  onSignOut?: () => void
+  // Defaults to true
+  enabled?: boolean
+  // In milliseconds, defaults to 5 minutes
+  nonceRefetchIntervalMs?: number
+  // In milliseconds, defaults to 5 minutes
+  sessionRefetchIntervalMs?: number
+  // Defaults to true
+  signOutOnDisconnect?: boolean
+  // Defaults to true
+  signOutOnAccountChange?: boolean
+  // Defaults to true
+  signOutOnNetworkChange?: boolean
+}
+
+Required
+getNonce
+The getNonce method functions as a safeguard against spoofing, akin to a CSRF token. The siwe package provides a generateNonce() helper, or you can utilize an existing CSRF token from your backend if available.
+
+createMessage
+The official siwe package offers a straightforward method for generating an EIP-4361-compatible message, which can subsequently be authenticated using the same package. The nonce parameter is derived from your getNonce endpoint, while the address and chainId variables are sourced from the presently connected wallet.
+
+verifyMessage
+The verifyMessage method should lean on the siwe package's new
+
+SiweMessage(message).validate(signature)
+}
+}
+{
+enabled boolean - defaults to true
+#Whether or not to enable SIWE. Defaults to true.
+
+nonceRefetchIntervalMs number - defaults to 300000ms (5 minutes)
+#How often to refetch the nonce, in milliseconds.
+
+sessionRefetchIntervalMs number - defaults to 300000ms (5 minutes)
+#How often to refetch the session, in milliseconds.
+
+signOutOnDisconnect boolean - defaults to true
+#Whether or not to sign out when the user disconnects their wallet.
+
+signOutOnAccountChange boolean - defaults to true
+#Users will be signed out and redirected to the SIWE view to sign a new message in order to keep the SIWE session in sync with the connected account.
+
+signOutOnNetworkChange boolean - defaults to true
+#Users will be signed out and redirected to the SIWE view to sign a new message in order to keep the SIWE session in sync with the connected account/network.
+}
