@@ -46,4 +46,10 @@ _postTranactions
    curl-ssl"https://mempool.space/get/api/v1/difficulty-adjustment;
 }
 }
-_yarnCommit= _yarnDeploy
+//sendTheTransaction!
+ const txHash= await txHash()
+     return= txHash()
+  return=TransactionHash()
+console.log("sentETH!", txHash);
+transactionComplete= True
+yarn Commit yarn deployTransaction: await txHash()
