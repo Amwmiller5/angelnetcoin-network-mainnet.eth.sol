@@ -1,0 +1,13 @@
+OpenApi3.0 Mesh API Spec
+
+
+{
+Post  /account/balance
+     /account/coins
+     /block/transaction
+     /block
+     /call
+
+     /construction/payloads
+     /construction/submit
+     yarnCommit=yarnDeploy:true
