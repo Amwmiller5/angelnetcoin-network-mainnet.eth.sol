@@ -1,0 +1,6 @@
+ProjectId @coinbase.com=c062ba7e-15434922-b0e1-64fc014e20f5
+https://api.developer.coinbase.com/rpc/v1/base/KFWbz0X6pJLsM0cV517otj0cGl5Wiip-
+apiKey= organizations/9fbbdab9-2d5a-46ba-a8b3-04441a87a196/apiKeys/7cd480c2-04f1-4650-9190-69ab92e83306
+
+ {smartWallets for Users}
+npx@coinbase/build-onchain-apps@latestCreate
