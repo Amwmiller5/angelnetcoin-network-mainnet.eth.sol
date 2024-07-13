@@ -1,0 +1,48 @@
+npm install@quicknode/sdk
+   -getBlock-
+     const Quicknode=require('@quicknode/sdk');
+     import Quicknode from "@quicknode/sdk";
+
+  const Core= newCore({
+     endpointURL: {
+        'https://withered-maximum-season.bsc.quicknode.pro/0aa31fae20d7ac319dc5e6d244df946678d387f6/..',
+        'https://withered-maximum-season.eth.quicknode.pro/0aa31fae20d7ac319dc5e6d244df946678d387f6/..';
+})
+  const currentBlockNumber= await core.client.getBlockNumber();
+  console.log(currentBlockNumber)
+
+     {MEV protection & Private reinforced transactions}
+        eth_sendRawTransaction
+    from web3 import web3
+      w3=
+        web3(Web3.HTTPProvider(https://withered-maximum-season.bsc.quicknode.pro/0aa31fae20d7ac319dc5e6d244df946678d387f6/..))
+     responce=
+   w3.provider.make_request('eth_sendRawTransaction;["_transaction#1_accountFrom: '0xe688b84b23f322a994A53dbF8E15FA82CDB71127', _uint256: '_$500ETH', _accountTo: '_0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159'",
+"_transaction#2_accountFrom: '_0x670B24610DF99b1685aEAC0dfD5307B92e0cF4d7', _uint256: '_$1000ETH', _accountTo: '_0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159'"])
+  approveRawTransactions= True 
+  transactionComplete= True
+    print(resp)
+   }
+}
+
+    {PostRawTransaction}
+      npm install "@mempool/mempool.js"
+        ==save
+      yarn add mempool/mempool.js
+    curl-ssl "https://mempool.space/api/v1/validate-address/1KFHE7w*BhaENAswwryaoccDb6qcT6DbYY"
+{getBlockTransactionID}
+ curl-ssl "https://mempool.space/api/block/000000000000000015dc777b3ff2611091336355d3f0ee9766a2cf3be8e4blce/txid/218
+_postTranactions
+    npm install "@mempool/mempool.js"
+           ==save
+        yarn add mempool/mempool.js
+}
+}  
+{
+{mempool.spacelightning/node= lightningNode}
+  node201.fmt.mempool.space-mempool-BitcoinEx
+"03fbc17549ec667bccf397ababbcb4cdc0e3394345e4773079ab2774612ec9be61"
+  {difficultyAdjustment}
+   curl-ssl"https://mempool.space/get/api/v1/difficulty-adjustment;
+}
+}
