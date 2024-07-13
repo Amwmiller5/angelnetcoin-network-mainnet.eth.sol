@@ -1,0 +1,28 @@
+{
+"config": {
+  "ethash": {
+  },
+  "chainID": 61
+  "chainID": 2018
+  },
+  ...
+}
+--p2p-enabled[=<true>]
+--p2p-host=127.0.0.1
+--p2p-network="0.0.0.0"
+--p2p-port=<30303>
+--profile=<minimalist_staker>
+--rpc-http-authentication-enabled[=<true>]
+--rpc-http-authentication-jwt-key[=<4ebe9a6cdf5f4e2eb42072f41a15b966>]
+--remote-connections-limit-enabled[=<true>]
+--remote-connections-max-percentage=20
+--reorg-logging-threshold=<3>
+--required-block, --required-blocks[=BLOCK=HASH[,BLOCK=HASH.....
+--revert-reason-enabled[=<false>]
+--rpc-gas-cap=0
+rpc-http-api=["ETH","NET","WEB3","ADMIN","PLUGINS","TXPOOL","PERM","DEBUG","MINER"
+["MINER:[]"]
+--rpc-http-api-methods-no-auth=admin_peers,eth_getWork
+--rpc-http-cors-origins=chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn,http://github.ethereum.org,edge-extension,https://metamask.io,https://coinbase.com,https://trustwallet.com
+--random-peer-priority-enabled=false
+--receipt-compaction-enabled=<true>
