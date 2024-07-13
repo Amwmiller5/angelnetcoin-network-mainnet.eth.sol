@@ -1,0 +1,19 @@
+{SmartWallet forUsers}
+npx@coinbase/build-onchain-apps@latestCreate
+  NEXT_PUBLIC_RPC_URL=https://www.ethercluster.com/etc
+     Environment=localhost
+      yarn install ++yarn dev
+BlockExplorer=https://blockscout.com/etc/mainnet
+}
+}
+
+
+AlchemyImplemtation:
+AppID: gxeidv98rfq7fh8z
+EndPointConnections:(
+         https://eth-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z,https://polygon-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z,https://eth-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z,https://arb-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z,https://opt-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z,https://polygonzkeum-mainnet.g.alchemy,com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z,https://base-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z,https://starknet-mainnet.g.alchemy.com/starknet/version/rpc/v0_7/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z,https://solana-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z,https://astar-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z,https://zksync-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z,https://frax-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z,https://zetachain-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z);
+UserProfileAccess toAlchemy Connections=
+dashboard.alchemy.com/apps/fmzpuu8tcoos3e8d
+Admin=[allPermissions:true] accessKey=alcht_PXYlglr0TRLCFbdwSZbESkT7glrY4S
+UserCreator=[limitedAccess:true]ReadOnly accessKey=alcht_Qq0bNSs286GRo2KXEyuQa85sJrVc7u
+UserStarRating=[limitedAccess:true] accessKey=alcht_3HdPD4z90snLfffbpDqKEBUIKL0Bdz
