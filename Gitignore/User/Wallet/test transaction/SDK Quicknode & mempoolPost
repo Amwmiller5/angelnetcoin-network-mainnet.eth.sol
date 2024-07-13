@@ -46,3 +46,4 @@ _postTranactions
    curl-ssl"https://mempool.space/get/api/v1/difficulty-adjustment;
 }
 }
+_yarnCommit= _yarnDeploy
