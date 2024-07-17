@@ -1,0 +1,17 @@
+import { TonClient, WalletContractV4 } from "@ton/ton";
+import { mnemonicNew, mnemonicToPrivateKey } from "@ton/crypto";
+import { getHttpEndpoint } from "@orbs-network/ton-access";
+
+// get the decentralized RPC endpoint  
+const endpoint = await getHttpEndpoint();
+const client = new TonClient({ endpoint });
+
+// Generate new key
+let mnemonics = await mnemonicNew();
+let keyPair = await mnemonicToPrivateKey(mnemonics);
+
+let wallet = WalletContractV4.create({ 0, publicKey: keyPair.publicKey });
+let walletContract = client.open(wallet);
+
+let balance: bigint = await walletContract.getBalance();
+console.log(balance) // Get balance
