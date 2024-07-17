@@ -1,0 +1,142 @@
+ 
+storage/storage-daemon/StorageProvider.cpp
+Original file line number	Diff line number	Diff line change
+@@ -258,9 +258,13 @@ void StorageProvider::process_transaction(tl_object_ptr<tonlib_api::raw_transact
+    }
+    td::Ref<vm::Cell> body = r_body.move_as_ok();
+    vm::CellSlice cs = vm::load_cell_slice(body);
+    // const op::offer_storage_contract = 0x107c49ef;
+    if (cs.size() >= 32 && cs.prefetch_long(32) == 0x107c49ef) {
+      new_contract_address = message->destination_->account_address_;
+    if (cs.size() >= 32) {
+      long long op_code = cs.prefetch_long(32);
+      // const op::offer_storage_contract = 0x107c49ef; -- old versions
+      // const op::deploy_storage_contract = 0xe4748df1; -- new versions
+      if((op_code == 0x107c49ef) || (op_code == 0xe4748df1)) {
+        new_contract_address = message->destination_->account_address_;
+      }
+    }
+  }
+  if (!new_contract_address.empty()) {
+ 1 change: 1 addition & 0 deletions1  
+storage/storage-daemon/smartcont/constants.fc
+Original file line number	Diff line number	Diff line change
+@@ -1,4 +1,5 @@
+const op::offer_storage_contract = 0x107c49ef;
+const op::deploy_storage_contract = 0xe4748df1;
+const op::close_contract = 0x79f937ea;
+const op::contract_deployed = 0xbf7bd0c1;
+const op::storage_contract_confirmed = 0xd4caedcd;
+Binary file modifiedBIN +0 Bytes (100%) 
+storage/storage-daemon/smartcont/storage-contract-code.boc
+Binary file not shown.
+  4 changes: 2 additions & 2 deletions4  
+storage/storage-daemon/smartcont/storage-contract.fc
+Original file line number	Diff line number	Diff line change
+@@ -76,7 +76,7 @@ int check_proof(int merkle_hash, int byte_to_proof, int file_size, cell file_dic
+
+    int query_id = in_msg_body~load_uint(64);
+
+    if(op == op::offer_storage_contract) {
+    if(op == op::deploy_storage_contract) {
+        add_to_balance(msg_value - 2 * fee::receipt_value);
+        var (client, torrent_hash) = get_client_data(get_data().begin_parse());
+        var msg = begin_cell()
+@@ -263,4 +263,4 @@ _ get_next_proof_info() method_id {
+            next_proof, rate_per_mb_day, max_span, last_proof_time,
+            client, torrent_hash) = get_storage_contract_data();
+    return (next_proof, last_proof_time, max_span);
+}
+}
+  2 changes: 1 addition & 1 deletion2  
+storage/storage-daemon/smartcont/storage-contract.fif
+Original file line number	Diff line number	Diff line change
+@@ -111,7 +111,7 @@ PROGRAM{
+    }>	//  msg_value sender_address op in_msg_body
+    64 LDU	//  msg_value sender_address op query_id in_msg_body
+    s2 PUSH
+    276580847 PUSHINT	//  msg_value sender_address op query_id in_msg_body op _27=276580847
+    3832843761 PUSHINT	//  msg_value sender_address op query_id in_msg_body op _27=3832843761
+    EQUAL	//  msg_value sender_address op query_id in_msg_body _28
+    IF:<{	//  msg_value sender_address op query_id in_msg_body
+      s0 s4 XCHG
+ Binary file modifiedBIN +2 Bytes (100%) 
+storage/storage-daemon/smartcont/storage-provider-code.boc
+Binary file not shown.
+  7 changes: 5 additions & 2 deletions7  
+storage/storage-daemon/smartcont/storage-provider.fc
+Original file line number	Diff line number	Diff line change
+@@ -4,7 +4,10 @@
+
+const min_deploy_amount = 50000000;
+
+cell storage_contract_code() asm """ "storage-contract-code.boc" file>B B>boc PUSHREF """;
+;; cell storage_contract_code() asm """ "storage-contract-code.boc" file>B B>boc PUSHREF """;
+;; the same constant but more "compiler" friendly
+cell storage_contract_code() asm " B{B5EE9C72010213010002FD000114FF00F4A413F4BCF2C80B0102016202030202CE04050201200D0E020120060700115D74CD0FA40D3FF30804E1007434C0C05C6C2497C0F83E900C0871C023A0D6F6CF380074C7C8700023A117C0F6CF3834CFC8A084391D237C6EA3AD4120829896802876CF3B51343C00E0842FDEF4305C20063232C1540133C5A0824C4B403E8084F2DA84B2C7D48832CFF2FFF25C3EC0244D388860841E8D85A22EA008080809006F35CE6CE4D7C11C3834C1C070C0E4D7C11C3834FFC12F64D7C0DC3800B50C1C25A010086B092E64693A0CC06AC140BD039BE84C645FF81C20002CED44D0D200FA0003A001C8CA0001FA0201CF16C9ED5403E68E4FED44D0D200FA00FA4003B3F2E3EF5350C705F2E1917FC8CA0058FA0201CF1621CF16C9ED54F003F8258210D4CAEDCD708018C8CB055005CF168209312D00FA0214CB6A13CB1F12CB3FCBFFC970FB00DE21821079F937EABAE30221821046ED2E94BA9130E30D8210419D5D4DBA915BE30D0A0B0C00EA10235F03ED44D0D200FA00FA40F0035352C7055162C70516B1F2E191F8258210B6236D63708018C8CB055004CF165005FA0212CB6A13CB1F12CB3F5230CBFFC902B39730318100A0FB00E0018040FB00F8258210B6236D63708018C8CB055004CF1623FA0213CB6A12CB1FCB3FCBFFC98100A0FB000092ED44D0D200FA00FA403002F2E3EB5341C705F2E19120C200998208989680A072FB029130E28210A91BAF56708018C8CB055003CF168209312D00FA0212CB6ACB1FCB3FC98100A0FB0000FA01D430ED44D0D200FA00FA40D3FFD33FD33FFA00D31FD31FD43009F2E3EB53A6C705F2E191544540525BF001F2E3EA22F811F8235003A128B6085331A8018102A3AA1AA984067007A116B609F8237FC8CA0058FA025005CF1613CBFFCB3FCB3F58FA0213CB1F12CB1FCCC9ED54708018C8CB0558CF16CB6EC98042FB000201200F100011BEE6576A2686B8500402012011120033B9241ED44D0D200FA00FA40D3FFD33FD33FFA00D31FD31FF00380017B6E4F0402A483DA87B0D9430001BB7CA50402A483DA87B0B664D8A70} B>boc PUSHREF ";
+
+
+slice calculate_address_by_stateinit(cell state_init) {
+    return begin_cell().store_uint(4, 3)
+@@ -67,7 +70,7 @@ cell build_storage_contract_stateinit(int merkle_hash, int file_size, int rate_p
+            .store_coins(0)
+            .store_uint(4 + 2, 1 + 4 + 4 + 64 + 32 + 1 + 1 + 1)
+            .store_ref(state_init)
+            .store_uint(op::offer_storage_contract, 32)
+            .store_uint(op::deploy_storage_contract, 32)
+            .store_uint(query_id, 64)
+            .end_cell();
+    send_raw_message(msg, 64);
+  29 changes: 15 additions & 14 deletions29  
+storage/storage-daemon/smartcont/storage-provider.fif
+Original file line number	Diff line number	Diff line change
+@@ -52,7 +52,7 @@ PROGRAM{
+    STREF	//  _33
+    ENDC	//  data
+    0 PUSHINT	//  data _36=0
+     "storage-contract-code.boc" file>B B>boc PUSHREF 	//  data _36=0 _37
+     B{B5EE9C72010213010002FD000114FF00F4A413F4BCF2C80B0102016202030202CE04050201200D0E020120060700115D74CD0FA40D3FF30804E1007434C0C05C6C2497C0F83E900C0871C023A0D6F6CF380074C7C8700023A117C0F6CF3834CFC8A084391D237C6EA3AD4120829896802876CF3B51343C00E0842FDEF4305C20063232C1540133C5A0824C4B403E8084F2DA84B2C7D48832CFF2FFF25C3EC0244D388860841E8D85A22EA008080809006F35CE6CE4D7C11C3834C1C070C0E4D7C11C3834FFC12F64D7C0DC3800B50C1C25A010086B092E64693A0CC06AC140BD039BE84C645FF81C20002CED44D0D200FA0003A001C8CA0001FA0201CF16C9ED5403E68E4FED44D0D200FA00FA4003B3F2E3EF5350C705F2E1917FC8CA0058FA0201CF1621CF16C9ED54F003F8258210D4CAEDCD708018C8CB055005CF168209312D00FA0214CB6A13CB1F12CB3FCBFFC970FB00DE21821079F937EABAE30221821046ED2E94BA9130E30D8210419D5D4DBA915BE30D0A0B0C00EA10235F03ED44D0D200FA00FA40F0035352C7055162C70516B1F2E191F8258210B6236D63708018C8CB055004CF165005FA0212CB6A13CB1F12CB3F5230CBFFC902B39730318100A0FB00E0018040FB00F8258210B6236D63708018C8CB055004CF1623FA0213CB6A12CB1FCB3FCBFFC98100A0FB000092ED44D0D200FA00FA403002F2E3EB5341C705F2E19120C200998208989680A072FB029130E28210A91BAF56708018C8CB055003CF168209312D00FA0212CB6ACB1FCB3FC98100A0FB0000FA01D430ED44D0D200FA00FA40D3FFD33FD33FFA00D31FD31FD43009F2E3EB53A6C705F2E191544540525BF001F2E3EA22F811F8235003A128B6085331A8018102A3AA1AA984067007A116B609F8237FC8CA0058FA025005CF1613CBFFCB3FCB3F58FA0213CB1F12CB1FCCC9ED54708018C8CB0558CF16CB6EC98042FB000201200F100011BEE6576A2686B8500402012011120033B9241ED44D0D200FA00FA40D3FFD33FD33FFA00D31FD31FF00380017B6E4F0402A483DA87B0D9430001BB7CA50402A483DA87B0B664D8A70} B>boc PUSHREF 	//  data _36=0 _37
+    OVER	//  data _36=0 _37 _38=0
+    NEWC	//  data _36=0 _37 _38=0 _39
+    2 STU	//  data _36=0 _37 _41
+@@ -93,26 +93,27 @@ PROGRAM{
+    s1 s5 XCHG
+    s1 s6 XCHG	//  query_id merkle_hash file_size rate_per_mb_day max_span client torrent_hash
+    build_storage_contract_stateinit CALLDICT	//  query_id state_init
+    276580847 PUSHINT	//  query_id state_init _54=276580847
+    6 PUSHINT	//  query_id state_init _54=276580847 _57
+    24 PUSHINT	//  query_id state_init _54=276580847 _57 _58=24
+    NEWC	//  query_id state_init _54=276580847 _57 _58=24 _59
+    6 STU	//  query_id state_init _54=276580847 _57 _61
+    s3 PUSH	//  query_id state_init _54=276580847 _57 _61 state_init
+    calculate_address_by_stateinit CALLDICT	//  query_id state_init _54=276580847 _57 _61 _62
+    STSLICER	//  query_id state_init _54=276580847 _57 _63
+    0 PUSHINT	//  query_id state_init _54=276580847 _57 _63 _64=0
+    STGRAMS	//  query_id state_init _54=276580847 _57 _65
+    108 STU	//  query_id state_init _54=276580847 _81
+    s1 s2 XCHG	//  query_id _54=276580847 state_init _81
+    STREF	//  query_id _54=276580847 _82
+    3832843761 PUSHINT	//  query_id state_init _54=3832843761
+    6 PUSHINT	//  query_id state_init _54=3832843761 _57
+    24 PUSHINT	//  query_id state_init _54=3832843761 _57 _58=24
+    NEWC	//  query_id state_init _54=3832843761 _57 _58=24 _59
+    6 STU	//  query_id state_init _54=3832843761 _57 _61
+    s3 PUSH	//  query_id state_init _54=3832843761 _57 _61 state_init
+    calculate_address_by_stateinit CALLDICT	//  query_id state_init _54=3832843761 _57 _61 _62
+    STSLICER	//  query_id state_init _54=3832843761 _57 _63
+    0 PUSHINT	//  query_id state_init _54=3832843761 _57 _63 _64=0
+    STGRAMS	//  query_id state_init _54=3832843761 _57 _65
+    108 STU	//  query_id state_init _54=3832843761 _81
+    s1 s2 XCHG	//  query_id _54=3832843761 state_init _81
+    STREF	//  query_id _54=3832843761 _82
+    32 STU	//  query_id _84
+    64 STU	//  _86
+    ENDC	//  msg
+    64 PUSHINT	//  msg _88=64
+    SENDRAWMSG
+  }>
+  recv_internal PROC:<{
+    c2 SAVE
+    SAMEALTSAVE	//  msg_value in_msg_full in_msg_body
+    SWAP	//  msg_value in_msg_body in_msg_full
+    CTOS	//  msg_value in_msg_body cs
