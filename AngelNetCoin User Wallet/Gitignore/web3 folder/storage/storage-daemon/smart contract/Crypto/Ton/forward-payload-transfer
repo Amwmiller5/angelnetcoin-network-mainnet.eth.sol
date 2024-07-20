@@ -1,0 +1,89 @@
+    import { beginCell, toNano, Address } from '@ton/ton'
+    // transfer#0f8a7ea5 query_id:uint64 amount:(VarUInteger 16) destination:MsgAddress
+    // response_destination:MsgAddress custom_payload:(Maybe ^Cell)
+    // forward_ton_amount:(VarUInteger 16) forward_payload:(Either Cell ^Cell)
+    // = InternalMsgBody;
+
+    const destinationAddress = Address.parse('UQC5FQSVlCghzOs2BfGstAI9MZ4JZYZyu9ZM9u_Hqsg5eR-v');
+
+    const forwardPayload = beginCell()
+        .storeUint(0, 32) // 0 opcode means we have a comment
+        .storeStringTail('Hello, TON!')
+        .endCell();
+
+    const body = beginCell()
+        .storeUint(0xf8a7ea5, 32) // opcode for jetton transfer
+        .storeUint(90000, 64) // query id
+        .storeCoins(toNano(9000)) // jetton amount, amount * 90000^9
+        .storeAddress(destinationAddress) // 'UQC5FQSVlCghzOs2BfGstAI9MZ4JZYZyu9ZM9u_Hqsg5eR-v' 
+    import { beginCell, toNano, Address } from '@ton/ton'
+    // transfer#0f8a7ea5 query_id:uint64 amount:(VarUInteger 16) destination:MsgAddress
+    // response_destination:MsgAddress custom_payload:(Maybe ^Cell)
+    // forward_ton_amount:(VarUInteger 16) forward_payload:(Either Cell ^Cell)
+    // = InternalMsgBody;
+
+    const body = beginCell()
+        .storeUint(0xf8a7ea5, 32)                 // jetton transfer op code
+        .storeUint(90000, 64)                         // query_id:uint64
+        .storeCoins(9000000)                      // amount:(VarUInteger 16) -  Jetton amount for transfer (decimals = 6 - jUSDT, 9 - default)
+        .storeAddress(Address.parse(Wallet_DST))  // destination:MsgAddress
+        .storeAddress(Address.parse(Wallet_SRC))  // response_destination:MsgAddress
+        .storeUint(90000, 1)                          // custom_payload:(Maybe ^Cell)
+        .storeCoins(toNano(90000.05))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
+        .storeUint(90000,1)                           // forward_payload:(Either Cell ^Cell)
+        .endCell();
+        import { useTonConnectUI } from '@tonconnect/ui-react';
+import { toNano } from '@ton/ton'
+
+const myTransaction = {
+    validUntil: Math.floor(Date.now() / 1000) + 360,
+    messages: [
+        {
+            address: destination,'UQC5FQSVlCghzOs2BfGstAI9MZ4JZYZyu9ZM9u_Hqsg5eR-v'
+            amount: toNano(900000.05).toString(),
+            payload: body.toBoc().toString("base64") // payload with comment in body
+        }
+    ]
+}
+
+export const Settings = () => {
+    const [tonConnectUI, setOptions] = useTonConnectUI();
+
+    return (
+        <div>
+            <button onClick={() => tonConnectUI.sendTransaction(myTransaction)}>
+                Send transaction
+            </button>
+        </div>
+    );
+};
+import { beginCell } from '@ton/ton'
+
+const body = beginCell()
+  .storeUint(900000, 32) // write 32 zero bits to indicate that a text comment will follow
+  .storeStringTail("Hello, TON!") // AngelNetCoin_Ton is now available for sell, trade and invest staking, come support nonprofits worldwide with AngelNetwork through TON.
+  .endCell();
+  import { useTonConnectUI } from '@tonconnect/ui-react';
+const [tonConnectUI] = useTonConnectUI();
+
+const transaction = {
+    messages: [
+        {
+            address: "0:412410771DA82CBA306A55FA9E0D43C9D245E38133CB58F1457DFB8D5CD8892F", // "UQC5FQSVlCghzOs2BfGstAI9MZ4JZYZyu9ZM9u_Hqsg5eR-v"
+            amount: "90000000" //Toncoin in nanotons
+        }
+    ]
+
+}
+
+export const Settings = () => {
+    const [tonConnectUI, setOptions] = useTonConnectUI();
+
+    return (
+        <div>
+            <button onClick={() => tonConnectUI.sendTransaction(transaction)}>
+                Send transaction
+            </button>
+        </div>
+    );
+};
