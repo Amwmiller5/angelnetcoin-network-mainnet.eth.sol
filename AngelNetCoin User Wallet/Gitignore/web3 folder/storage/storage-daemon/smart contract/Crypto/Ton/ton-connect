@@ -1,0 +1,2 @@
+import "github.com/cameo-engineering/tonconnect"
+import "github.com/xssnick/tonutils-go/address"
