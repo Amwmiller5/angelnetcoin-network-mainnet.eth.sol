@@ -1,0 +1,36 @@
+<Title>'AngelNetCoin_Mainnet'
+     appId: "gxeidu98rfq7fh8z"
+     ApiKey: "3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+     Ethereum:
+       "https://eth-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+      Polygon Pos:
+        "https://polygon-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+      Arbitrum:
+        "https://arb-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+        Optimisum:
+          "https://opt-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+        PolygonzkEvM:
+          "https://polygonzkevm-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+        Base:
+          "https://base-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+        Starknet v0_7:
+          "https://starknet-mainnet.g.alchemy.com/starknet/version/rpc/v0_7/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+        Solana:
+          "https://solana-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+        Astar:
+          "https://astar-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+        ZKsync:
+          "https://zksync-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+        Zora:
+          "https://zora-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+        Frax:
+          "https://frax-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+        Zetachain:
+          "https://zetachain-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+        Blast:
+          "https://blast-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+        Metis:
+          "https://metis-mainnet.g.alchemy.com/v2/3GbqL1T8rB-Lo0PTRKiKda20kgfkvo8z"
+
+
+          
