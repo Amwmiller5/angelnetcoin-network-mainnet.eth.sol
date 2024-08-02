@@ -1,0 +1,570 @@
+# ... more CI config ...
+
+jobs:
+  myjob: angelnetcoin-mainnet
+    runs-on: ubuntu-latest
+    name: My Job
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # We need to fetch all branches and commits so that Nx affected has a base to compare against.
+          fetch-depth: 0
+
+      # In any subsequent steps within this job (myjob) we can reference the resolved SHAs
+      # using either the step outputs or environment variables:
+
+      # ===========================================================================
+      # OPTION 1) Environment variables
+      # ===========================================================================
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v4
+
+      - run: |
+          echo "BASE: ${{ env.NX_BASE }}"
+          echo "HEAD: ${{ env.NX_HEAD }}"
+
+      # ===========================================================================
+      # OPTION 2) Step outputs (in this case we must give the step an "id")
+      # ===========================================================================
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        id: setSHAs
+        uses: nrwl/nx-set-shas@v4
+
+      - run: |
+          echo "BASE: ${{ steps.setSHAs.outputs.base }}"
+          echo "HEAD: ${{ steps.setSHAs.outputs.head }}"
+
+      # ... more CI config ...
+
+- uses: nrwl/nx-set-shas@v4
+  with:
+    # The "main" branch of your repository (the base branch which you target with PRs).
+    # Common names for this branch include main and master.
+    #
+    # Default: main
+    main-branch-name: 'Amwmiller5/ANC_MAIN'
+
+    # Applies the derived SHAs for base and head as NX_BASE and NX_HEAD environment variables within the current Job.
+    #
+    # Default: true
+    set-environment-variables-for-job: ''
+
+    # By default, if no successful workflow run is found on the main branch to determine the SHA, we will log a warning and use HEAD~1. Enable this option to error and exit instead.
+    #
+    # Default: false
+    error-on-no-successful-workflow: ''
+
+    # Fallback SHA to use if no successful workflow run is found. This can be useful in scenarios where you need a specific commit as a reference for comparison, especially in newly set up repositories or those with sparse workflow runs.
+    #
+    # Default: ""
+    fallback-sha: ''
+
+    # The type of event to check for the last successful commit corresponding to that workflow-id, e.g. push, pull_request, release etc.
+    #
+    # Default: push
+    last-successful-event: ''
+
+    # The path where your repository is. This is only required for cases where the repository code is checked out or moved to a specific path.
+    #
+    # Default: .
+    working-directory: 'https://github.com/Amwmiller5/ANC_MAIN'
+
+    # The ID of the github action workflow to check for successful run or the name of the file name containing the workflow.
+    # E.g. 'ci.yml'. If not provided, current workflow id will be used
+
+    #jobs:
+  myjob:
+    runs-on: ubuntu-latest
+    name: My Job
+    permissions:
+      contents: 'read'
+      actions: 'read'
+    workflow-id: ''
+
+# ... more CI config ...
+
+jobs:
+  myjob:
+    runs-on: self-hosted
+      container: my-org/my-amazing-image:v1.2.3-fresh
+    name: My Job
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # We need to fetch all branches and commits so that Nx affected has a base to compare against.
+          fetch-depth: 0
+
+      # Mark your git directory as safe
+      - name: Set Directory as Safe
+        run: |
+          git config --system --add safe.directory "$GITHUB_WORKSPACE"
+        shell: bash
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v4
+
+      - run: |
+          echo "BASE: ${{ env.NX_BASE }}"
+          echo "HEAD: ${{ env.NX_HEAD }}"
+
+      # ... more CI config ...
+
+npx nx init
+
+{
+  ...
+  "scripts": {
+    "build": "next build",
+    "lint": "eslint ./src",
+    "test": "node ./run-tests.js"
+  }
+}
+npx nx@latest init
+
+{
+  "name": "Amwmiller5/ANC_MAIN",
+  ...
+  "scripts": {
+-     "build": "next build && echo 'Build complete'",
++     "build": "nx next:build && echo 'Build complete'",
+-     "lint": "eslint ./src",
++     "lint": "nx eslint:lint",
+    "test": "node ./run-tests.js"
+  },
++   "nx": {}
+}
+
+{
+  "plugins": [
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "eslint:lint"
+      }
+    },
+    {
+      "plugin": "@nx/next/plugin",
+      "options": {
+        "buildTargetName": "next:build",
+        "devTargetName": "dev",
+        "startTargetName": "start"
+      }
+    }
+  ]
+}
+nx show project my-workspace --web
+
+{
+  "options": {
+    "cwd": ".",
+    "command": "next dev"
+  },
+  "executor": "nx:run-commands",
+  "configurations": {},
+  "metadata": {
+    "technologies": [
+      "next"
+    ]
+  }
+}
+nx run my-workspace:dev
+{
+  // ...
+  "targets": {
+    //...
+    "ls-project-root": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ls apps/frontend/src"
+      }
+    }
+  }
+}
+nx run frontend:ls-project-root
+Commands
+"create-script": {
+    "executor": "nx:run-commands",
+    "options": {
+        "commands": [
+          "mkdir -p apps/frontend/scripts",
+          "touch apps/frontend/scripts/my-script.sh",
+          "chmod +x apps/frontend/scripts/my-script.sh"
+        ],
+        "parallel": false
+    }
+}
+"create-script": {
+    "executor": "nx:run-commands",
+    "options": {
+        "cwd": "apps/frontend",
+        "commands": [
+          "mkdir -p scripts",
+          "touch scripts/my-script.sh",
+          "chmod +x scripts/my-script.sh"
+        ],
+        "parallel": false
+    }
+}
+"create-script": {
+    "executor": "nx:run-commands",
+    "options": {
+        "cwd": "apps/frontend",
+        "commands": [
+          "mkdir -p scripts",
+          "touch scripts/{args.name}.sh",
+          "chmod +x scripts/{args.name}.sh"
+        ],
+        "parallel": false
+    }
+}
+nx run frontend:webpack --args="--config=example.config.js"
+"webpack": {
+    "executor": "nx:run-commands",
+    "options": {
+        "command": "webpack"
+    }
+}
+"webpack": {
+    "executor": "nx:run-commands",
+    "options": {
+        "commands": [
+            {
+                "command": "webpack",
+                "forwardAllArgs": false
+            }
+        ]
+    }
+}
+Array<oneOf [object , string]>
+oneOf [Array<string>, string]
+boolean
+Default: true
+Run commands in parallel.
+oneOf [Array<string>, string]
+Extra arguments. You can pass them as follows: nx run project:target --args='--wait=100'. You can then use {args.wait} syntax to interpolate them in the workspace config file. 
+boolean
+Default: false
+Use colors when showing output of command.
+string
+Current working directory of the commands. If it's not specified the commands will run in the workspace root, if a relative path is specified the commands will run in that path relative to the workspace root and if it's an absolute path the commands will run in that path.
+string
+You may specify a custom .env file path.
+nv
+env 
+Environment variables that will be made available to the commands. This property has priority over the .env files.
+oneOf [string, Array<string>]
+String or array of strings to appear in stdout or stderr that indicate that the task is done. When running multiple commands, this option can only be used when parallel is set to true. If not specified, the task is done when all the child processes complete.
+tty
+Hidden
+boolean
+Whether commands should be run with a tty terminal
+
+Additional Properties
+anything
+Extra properties of any type may be provided to this object.
+
+__unparsed__
+InternalHidden
+Array<string>
+No description available.
+
+
+{
+  "cache": true,
+  "options": {
+    "cwd": ".",
+    "command": "eslint ./src"
+  },
+  "inputs": [
+    "default",
+    "{workspaceRoot}/.eslintrc",
+    "{workspaceRoot}/tools/eslint-rules/**/*",
+    {
+      "externalDependencies": [
+        "eslint"
+      ]
+    }
+  ],
+  "executor": "nx:run-commands",
+  "configurations": {},
+  "metadata": {
+    "technologies": [
+      "eslint"
+    ]
+  }
+}
+
+{
+  "options": {
+    "cwd": ".",
+    "command": "next build"
+  },
+  "dependsOn": [
+    "^build"
+  ],
+  "cache": true,
+  "inputs": [
+    "default",
+    "^default",
+    {
+      "externalDependencies": [
+        "next"
+      ]
+    }
+  ],
+  "outputs": [
+    "{projectRoot}/.next",
+    "{projectRoot}/.next/!(cache)"
+  ],
+  "executor": "nx:run-commands",
+  "configurations": {},
+  "metadata": {
+    "technologies": [
+      "next"
+    ]
+  }
+}
+
+{
+  "options": {
+    "cwd": ".",
+    "command": "next start"
+  },
+  "dependsOn": [
+    "build"
+  ],
+  "executor": "nx:run-commands",
+  "configurations": {},
+  "metadata": {
+    "technologies": [
+      "next"
+    ]
+  }
+}
+{
+  "cwd": "."
+}
+nx affected -t <task>
+nx graph --affected
+
+nx affected:build --base=origin/main --head=$PR_BRANCH_NAME # where PR_BRANCH_NAME is defined by your CI system
+nx affected:build --base=origin/main~1 --head=origin/main # rerun what is affected by the last commit in main
+NX_BASE=origin/main~1
+NX_HEAD=origin/main
+{
+  "pluginsConfig": {
+    "@nx/js": {
+      "projectsAffectedByDependencyUpdates": "auto"
+    }
+  }
+}
+nx run-many
+nx run-many -t test
+ nx run-many -t test -p proj1 proj2
+ nx run-many -t test -p proj1 proj2 --parallel=5
+ nx run-many -t test -p proj1 proj2 --parallel=false
+ nx run-many -t test --projects=*-app --exclude excluded-app
+ nx run-many -t test --projects=tag:api-*
+ nx run-many -t test --projects=tag:type:ui
+ nx run-many -t test --projects=tag:type:feature,tag:type:ui
+ nx run-many --targets=lint,test,build
+ nx run-many -t=build --graph
+Footer
+Smart Monorepos · Fast CI
+ nx run-many -t=build --graph=output.json
+ nx run-many -t=build --graph=stdout
+{
+  "version": 2,
+  "title": "Run Commands",
+  "description": "Run any custom commands with Nx.",
+  "type": "object",
+  "cli": "nx",
+  "outputCapture": "pipe",
+  "presets": [
+    {
+      "name": "Arguments forwarding",
+      "keys": ["commands"]
+    },
+    {
+      "name": "Custom done conditions",
+      "keys": ["commands", "readyWhen"]
+    },
+    {
+      "name": "Setting the cwd",
+      "keys": ["commands", "cwd"]
+    }
+  ],
+  "properties": {
+    "commands": {
+      "type": "array",
+      "description": "Commands to run in child process.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "command": {
+                "type": "string",
+                "description": "Command to run in child process."
+              },
+              "forwardAllArgs": {
+                "type": "boolean",
+                "description": "Whether arguments should be forwarded when interpolation is not present."
+              },
+              "prefix": {
+                "type": "string",
+                "description": "Prefix in front of every line out of the output"
+              },
+              "color": {
+                "type": "string",
+                "description": "Color of the output",
+                "enum": [
+                  "black",
+                  "red",
+                  "green",
+                  "yellow",
+                  "blue",
+                  "magenta",
+                  "cyan",
+                  "white"
+                ]
+              },
+              "bgColor": {
+                "type": "string",
+                "description": "Background color of the output",
+                "enum": [
+                  "bgBlack",
+                  "bgRed",
+                  "bgGreen",
+                  "bgYellow",
+                  "bgBlue",
+                  "bgMagenta",
+                  "bgCyan",
+                  "bgWhite"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "description": "An optional description useful for inline documentation purposes. It is not used as part of the execution of the command."
+              }
+            },
+            "additionalProperties": false,
+            "required": ["command"]
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "x-priority": "important"
+    },
+    "command": {
+      "oneOf": [
+        {
+          "type": "array",
+          "description": "Command to run in child process, but divided into parts.",
+          "items": {
+            "type": "string"
+          },
+          "x-priority": "important"
+        },
+        {
+          "type": "string",
+          "description": "Command to run in child process."
+        }
+      ],
+      "type": "string",
+      "description": "Command to run in child process.",
+      "x-priority": "important"
+    },
+    "parallel": {
+      "type": "boolean",
+      "description": "Run commands in parallel.",
+      "default": true,
+      "x-priority": "important"
+    },
+    "readyWhen": {
+      "description": "String or array of strings to appear in `stdout` or `stderr` that indicate that the task is done. When running multiple commands, this option can only be used when `parallel` is set to `true`. If not specified, the task is done when all the child processes complete.",
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    },
+    "args": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "description": "Extra arguments. You can pass them as follows: nx run project:target --args='--wait=100'. You can then use {args.wait} syntax to interpolate them in the workspace config file. See example [above](#chaining-commands-interpolating-args-and-setting-the-cwd)"
+    },
+    "envFile": {
+      "type": "string",
+      "description": "You may specify a custom .env file path."
+    },
+    "color": {
+      "type": "boolean",
+      "description": "Use colors when showing output of command.",
+      "default": false
+    },
+    "cwd": {
+      "type": "string",
+      "description": "Current working directory of the commands. If it's not specified the commands will run in the workspace root, if a relative path is specified the commands will run in that path relative to the workspace root and if it's an absolute path the commands will run in that path."
+    },
+    "env": {
+      "type": "object",
+      "description": "Environment variables that will be made available to the commands. This property has priority over the `.env` files.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "__unparsed__": {
+      "hidden": true,
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "$default": {
+        "$source": "unparsed"
+      },
+      "x-priority": "internal"
+    },
+    "forwardAllArgs": {
+      "type": "boolean",
+      "description": "Whether arguments should be forwarded when interpolation is not present.",
+      "default": true
+    },
+    "tty": {
+      "type": "boolean",
+      "description": "Whether commands should be run with a tty terminal",
+      "hidden": true
+    }
+  },
+  "additionalProperties": true,
+  "oneOf": [
+    {
+      "required": ["commands"]
+    },
+    {
+      "required": ["command"]
+    }
+  ],
+  "examplesFile": "../../../docs/run-commands-examples.md"
+}
+
+
+
+© 2024 made with  by AngelNetCoin-Mainnet : by AngelNetwork
+
+
+
+
+
+
+
