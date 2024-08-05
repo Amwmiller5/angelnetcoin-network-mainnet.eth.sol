@@ -1,0 +1,285 @@
+Network: "Binance Smart Chain Mainnet"
+HTTP Provider: "https;//withered-maximum-season.bsc.quicknode.pro/0aa31fae20d7ac319dc5e6d244df946678d387f6"
+WWS Provider "https;//withered-maximum-season.bsc.quicknode.pro/0aa31fae20d7ac319dc5e6d244df946678d387f6"
+{Quicknode SDK Code}
+npm install@quicknode/sdk
+  -getBlock-
+    const Quicknode=require('quicknode/sdk');
+    import Quicknode from 'quicknode/sdk';
+
+    constructCore=newCore({
+         endpointUrl:  "https;//withered-maximum-season.bsc.quicknode.pro/0aa31fae20d7ac319dc5e6d244df946678d387f6",
+         })
+         {
+         const currentBlockNumber= await core.client.
+             getBlockNumber()
+          console.log(currentBlockNumber)
+
+           -MEV protection & private reinforced transactions-
+            eth_sendRawTransaction
+              from web3 import Web3
+                w3=
+                Web3 (Web3.HTTPProvider( "https;//withered-maximum-season.bsc.quicknode.pro/0aa31fae20d7ac319dc5e6d244df946678d387f6"))
+                   resp=
+                     w3.provider.make_request('eth_sendRawTransaction:[_transaction#1_transfer_$29e18ETH_to0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159_from0xe688b84b23f322a994A53dbF8E15FA82CDB71127])
+                     approveTransaction publicReturn(bool)
+                       Print(resp)
+                       }
+                       {
+                       ISPNodes:
+                         curl-ssl "https://mempool.space/api/v1/lightning/nodes/isp/165 09"
+                           -getBlockTransactionId-
+                           curl-ssl "https://mempool.space/api/block/000000000000000015dc777b3ff2611091336355d3f0ee9766a2cf3be8e4blce/txid/218
+                             -PostTransaction-
+                             #npm install@mempool/mempool.js
+                                --Save
+                                #yarn add@mempool/mempool.js
+                                }
+                                {
+                                  _buildLinux_
+                                  DNS_Record:
+                                  "actions/checkout@v3'(sha:f43a0e5ff2bd294095638e18286ca9a3d1956744)
+                                    actions/
+                                     setup-python@v3'/sha:3542bca2639a428e1796aaa6a2ffef0c0f575566
+                                       [new ref] 762a2cab668cad8bc9708f98763457312cdf0824
+
+                                    _CircleAPI-Key-forAngelNetCoin-
+                                     live-API-KEY: 'feccdc24fd8b599fdd6a50af7cbe8275:4e2528a19124f05f9e987d8432229ade'
+
+                                     -dificultyAdjustment-
+                                       curl-ssl "https://mempool.space/Get/api/v1/dificulty-adjustment"
+                                         -mempool.space/lightning/node-
+                                            lightningNode
+                                              node201.fmt.mempool.space-mempool-BitcoinEx03fbc17549ec667bccf397ababbcb4cdc0e3394345e4773079ab2774612ec9be61
+                                              }
+                                              {
+                                              -mimstaker.toml-
+                                               sync-mode="CHECKPOINT"
+                                               data-storage-format="BONSAI"
+                                               bonsai-historical-block-limit=128
+                                               max-peers=20
+                                               --p2phost;p2p-interface--
+                                               --p2phost--p2pnetworkinterface=
+                                                           0.0.0.0:30303
+                                                           --p2p-host=Host
+                                                              default-for-communication-is
+                                                                  127.0.0.1
+                                                           }
+                                                           {
+                                                        BlockchainHost: "Spydra"
+                                                        BlockchainName: "AngelNetCoin_Blockchain"
+                                                        NetworkOwner: "AngelNetwork"
+                                                        CloudHosting: "Azure(SpydraHosted)"
+                                                        AngelNetCoinFaucets: "https://freebitcoin.io", "https://coinFaucet.io", "https://freeEthereum.com"
+                                                        }
+                                                        {
+                                                        -CloudGateway-
+                                                        Link: "lime-worthwhile-porpoise-56.mypinata.cloud"
+                                                        App: "app.pinata.cloud"
+                                                        GatewayKey: Key1 "UCFFuzWMQqxc-ax4LzRfYiJg9sfzRbcUCc3SDNYydSQ0wEMPa03H1huGbEuDwj2"
+                                                        }
+                                                        {
+                                                        -EthereumClassicMainnet-
+                                                        RPCURL: "https://eee.ethercloster.com/etc
+                                                        ChainId: "61"
+                                                        Currency: "ETC"
+                                                        BlockExplorerURL: "https//blockscout.com/etc/mainnet/
+                                                        }
+                                                        {
+                                                        -LiveQuery-
+                                                        LiveQuery: "Flipsidecrypto"
+                                                        FlipsidecryptoAPI: "ed9a2785-361f-4831-92dd-afa04e022690"
+                                                        FlipsideSDK
+                                                        Copywrite2022 License Flipside-Crypto,INC
+                                                        js/License/Flipside-Crypto
+                                                        }
+                                                        {
+                                                        RPCMethod
+                                                          call
+                                                            SmartContract(0x44709a920fccf795fbc57baa433cc3dd53c44dbe@("https://dappradar.com/0x44709a920fccf795fbc57baa433cc3dd53c44dbe"))
+                                                            DappRadarName: "AngelNetwork"
+                                                            }
+                                                            {
+                                                            GasPolicyId: "633254b8-5cbd-4cf7b236-869alc0bddcc"
+                                                            UserStarRating: "alch_3HdPD4z900snLfffbpDqKEBUIKL0BdZ"
+                                                            }
+                                                    {
+                                                    --Installations--
+                                                    -name: Legitfy Analyze
+                                                    uses: Legit-Labs/legitify@v1.0.11
+
+                                                    -name: Harden-Runner
+                                                    uses: step-security/harden-runner@v2.9.0
+
+                                                    -name: HashiCorp Vault
+                                                    uses: hashicorp/vault-action@v3.0.0
+
+                                                    -name: Authz0 scanner
+                                                    uses: hahwu1/authz0@v1.0.0-action
+
+                                                    -name: Load secrets from 1Password
+                                                    uses: 1Password/load-secrets-action@v2.0.0
+
+                                                    -name: wait for secrets
+                                                    uses: step-security/wait-for-secrets@v1.2.0
+
+                                                    -name: Get Secrets Manager secrets
+                                                    uses: google-gethub-actions/get-secretmanager-secrets@v2.1.3
+
+                                                    -name: Gradle Dependency Submission
+                                                    uses: mikepenz/gradle-dependency-submission@v1.0.0
+                                                    DependencySubmissionETHAPI="7RJKCEEXEHBJAD8EJ6VSW76NJ26JKP5321",
+                                                    DependencySubmissiionWeb3API="4ebe9a6cdf5f4e2eb42072f41a15b96b",
+                                                    DependencySubmissionDevAPI="cGmTgt7N4aVYiQvt3W92FVLr",
+                                                    DependencySubmissionOpenApiKey="sk-proj-IZEd7fGQAujE0NdLu378T3B1bkFJz0ai0mv7m2XgiFnbAuGN",
+                                                    DependencySubmissionDuneApi="B3YIvjHTcw6hKAM1haGJYyrDaDLxuWN0"
+                                                    DependencySubmissionCoinbaseApi="organization/9fbbdab9-2d5a-46ba-a8b3-04441a87a196/apiKeys/7cd480c2-04f1-4650-9190-69ab92e83306"
+                                                    DependencySubmissionDeploymentAddress="0x0000000022D53366457F9d5E68Ec105046FC4383"
+                                                    DependencySubmissionCircleAPI="Live-API-KEY:feccdc24fd8b599fdd6a50af7cbe83275:4e2528a19124f05f9e987d8432229ade"
+                                                    DependencySubmissionRefersionApi="9fc3361cc0efd28dbf4c4c697e4c44bc70b97665"
+
+                                                    -name: Issue SSLcertificate
+                                                    uses: Menci/acme@v2
+
+                                                    -name: Automatic PullRequest
+                                                    uses: irgolic/AutoPR@v0.2.0
+
+                                                    -name: Hash.Corp-setup Teraform
+                                                    uses: hashicorp/setup-terraform@v3.1.1
+
+                                                    -name: Setup .Net Core SDK
+                                                    uses: actions/setup-dotnet@v4.0.1
+
+                                                    -name: ChatGPT Integration
+                                                    uses: Kxxt/chatgpt-action@v0.3
+
+                                                    -name: Github-Activity-Readme
+                                                    uses: jamesgeorge007/github-activity-readme@v0.4.4
+
+                                                    -name: Release Changelog Builder
+                                                    uses: mikepenz/release-changelog-buildeer-actions@v4.2.2
+
+                                                    -name: HTTP Request Action
+                                                    uses: fjogeleit/http-request-action@v1.16.1
+
+                                                    -name: Nx Set SHAs
+                                                    uses: nrwl/nx-set-shas@v4.0.6
+
+                                                    -name: Set Timezone
+                                                    uses: szenius/set-timezone@v2.0
+
+                                                    -name: interact with google Drive
+                                                    uses: satackey/action-google-drive@v1.2.1
+
+                                                    -name: ailyun-oss-website-action
+                                                    uses: fangbinwei/aliyun-oss-website-action@1.4.0
+
+                                                    -name: ssh-scp-ssh-pipelines
+                                                    uses: cross-the-world/ssh-scp-ssh-pipeline@v1.1.4
+
+                                                    -name: chocolate Action
+                                                    uses: crazy-max/ghaction-choiolatey@v3.0.0
+
+                                                    -name: codeatlas-codebase-visualisation
+                                                    uses: codeatlasHQ/codebase-visualizer-action@v1-beta
+
+                                                    -name: Extract Release Notes
+                                                    uses: ffurrer2/extract-release-notes@v2.2.0
+
+                                                    -name: Cloudflare DNS
+                                                    uses: xorilog/cloudflare-dns-action@1.0.0
+
+                                                    -name: add to web3
+                                                    uses: storacha-network/add-to-web3@v3.0.0
+
+                                                    -name: set action Secret
+                                                    uses: hmanzur/actions-set-secret@v2.0.0
+
+                                                    -name: secretHub
+                                                    uses: secretHub/actions@v0.2.1
+
+                                                    -name: Nightly Merge
+                                                    uses: robotology/gh-action-nightly-merge@v1.5.2
+
+                                                    -name: Git commit Data
+                                                    uses: rlespinasse/git-commit-data-action@v1.5.0
+
+                                                    -name: Return Dispatch
+                                                    uses: codex-/return-dispatch@v1.14.0
+
+                                                    -name: Telegram Action
+                                                    uses: xinthink/action-telegram@v1.1
+
+                                                    -name: seacrest wallet connect server
+                                                    uses: hayesgm/seacrest@v2
+
+                                                    -name: Sign Chrome Extention crx file
+                                                    uses: cadinalby/webext-buildtools-chrome-crx-action@2.0.3
+
+                                                    -name: SSH setup
+                                                    uses: MrSquaare/ssh-setup-action@v3.1.0
+
+                                                    -name: Ghost Static Website Generator
+                                                    uses: TrueSparrowSystem/ghost-static-website-generator@v5
+
+                                                    -name: Setup Git for windows SDK
+                                                    uses: git-for-windows/setup-git-for-windows-sdk@v1.10.2
+
+                                                    -name: Background Server
+                                                    uses: BerniWittmann/background-server-action@v1.1.1
+
+                                                    -name: Perf AI Actions
+                                                    uses: PerfAI-Inc/PerfAI-Action@v1.8.8
+
+                                                    -name: awake action
+                                                    uses: devpolo/awake-action@v1
+
+                                                    -name: Fetch API Data
+                                                    uses: JamesIves/fetch-api-data-action@v2.4.1
+
+                                                    -name: FrogoAdMob
+                                                    uses: amirisback/frogo-admob@v5.3.7
+
+                                                    -name: Github GraphQL Action
+                                                    uses: helaili/github-graphql-action@v2.0.1
+
+                                                    -name: Watermelon HTTP Client
+                                                    uses: CamiloGarciaLaRotta/watermelon-http-client@v1.7
+
+                                                    -name: Github App Access token generator
+                                                    uses: mercari/github-app-token-generator@v1
+
+                                                    -name: Discord.js-Webhook
+                                                    uses: EhsanFox/djs-actions@v0.1.0
+
+                                                    -name: Algorithmia CI/CD
+                                                    uses: algorithmiaio/algorithmia-ci-actions@v1.2.4
+
+                                                    -name: Graph QL Diff
+                                                    uses: agu-z/gql-diff-action@v2
+
+                                                    -name: send Telegram Messages
+                                                    uses: hajeekn/action-telegram@v1.0
+
+                                                    -name: Netrc Credentials
+                                                    uses: little-core-labs/netrc-creds@v2.1.0
+
+                                                    -name: App Store Connect Application Version
+                                                    uses: action-tools/get-appstore-version@v1.4
+
+                                                    -name: Validate Json Request-responce
+                                                    uses: TobiasOlofsson88/github-action-validate-json-request-result@v1.0.5
+
+                                                    -name: Check GraphQL
+                                                    uses: dbanty/graphql-check-action@v2.0.1
+
+                                                    -name: Create Azure ML Workspace
+                                                    uses: dciborow/ml-workspace@v0.0.0
+
+
+
+
+
+
+
+                                                    
