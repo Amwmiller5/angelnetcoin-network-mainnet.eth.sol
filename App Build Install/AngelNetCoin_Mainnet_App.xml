@@ -1,0 +1,48 @@
+import yarn workspaces
+import yarn create eth-app
+import yarn 0.25+
+import yarn create <starter-kit-package>
+{
+  "orgName": "@maker-app",
+  "packageName": "@maker-app/angelnetcoin-mainnet-eth-app",
+  "keywords": [
+    "dai",
+    "maker",
+    "angelnetcoin-mainnet-eth-app"
+  ]
+}
+yarn create eth-app my-eth-app --framework AngelNetCoin-Mainnet-eth-app
+yarn create react app
+yarn react-app: start
+
+
+pragma solidity 0.5.16;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import @openzeppelin/contracts/token/ERC20/ERC20Detailed.sol";
+
+/**
+*@title create AngelNetCoin Mainnet ETH app ERC-20 Token
+*@notice Sourced From OpenZeppelin and AngelNetCoinFactory to be minted
+*/
+contract ANC is ERC20, ERC20Detailed{
+      Constructor() public ERC20Detailed("ANC" , "AngelNetCoin", 10)
+{}
+
+*@dev Function to mint tokens
+*param to the address that will recieve the minted tokens.
+*@param value the amount of tokens to mint
+*@return A boolean that indicates if the operation was successful.
+*/
+function mint(address to, uint value) public returns (bool)
+{
+  _mint(0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159, $100000000ANC = 200000ETH);
+  return true;
+ }
+}
+
+const ANC = artifacts.require("./ANC.sol");
+
+module.exports = (AngelNetCoinFactory) => {
+  AngelNetCoinFactory.deploy(ANC);
+};
