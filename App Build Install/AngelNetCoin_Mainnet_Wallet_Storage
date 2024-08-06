@@ -1,0 +1,24 @@
+localWallet({
+  persist: true,
+});
+
+
+function localWallet(
+  config?: LocalWalletConfigOptions,
+): LocalWalletConfig;
+
+
+persist (optional)
+If true , the encrypted wallet JSON will be stored on localStorage with user's password. the user will not need to enter their password again when they visit the site. Because of this, the wallet can not be auto connected.
+
+If false , wallet will not be stored, and no password will be required to connect. the wallet will be lost when the user leaves or reloads the page.
+
+By default, it is set to true .
+
+LocalWalletConfigOptions = { persist?: boolean };
+
+
+function CheckoutWithCard(props: CheckoutWithCardProps): Element;
+let props: CheckoutWithCardProps;
+let returnType: Element;
+
