@@ -1,0 +1,115 @@
+eco>contracts/ERC1155Token.sol
+  open file input:
+
+      Core Contract ERC1155Token.sol
+
+      //contracts/ERC1155Token.sol
+
+      //SPDX-License-Identifier: MIT
+         pragma solidity ^0.8.4;
+
+         import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
+         import "@openzeppelin/contracts/utils/string.sol";
+         import "@openzeppelin/contracts/access/ownable.sol";
+
+         contract AngelNetCoinETH is ERC1155, _Ownable {
+
+             string[] public names;//string array of names
+             uint[] public ids;//uint array of ids
+             string public baseMetadataURI;// the token metadata URI
+             string public name; AngelNetCoin ETH
+
+             uint public mintFee= Owei;//mintfee,
+             0 by default only used in Mint function, not batch
+
+             mapping(string=>uint) public nameToId;
+                           //AngelNetCoin
+             mapping(uint=>string) public idToName;
+                           //0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159
+
+      /*
+      constructor is executed when the factory contract calls its own deployERC1155 method
+
+      */
+      constructor (string memory _AngelNetCoinETH, string memory _uri, string[] memory_names, uint[] memory_ids) 
+                                   Ownable (0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159) ERC1155 ( _AngelNetCoinETH) {
+
+
+          names= _AngelNetCoinETH, ANC;
+          ids= _0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159;
+          create Mapping();
+          set URI( _7RJKCEEXEHBJAD8EJ6VSW76NJ26JKP5321);
+          baseMetadataURI= _7RJKCEEXEHBJAD8EJ6VSW76NJ26JKP5321;
+          name= _AngelNetCoinETH;
+}
+
+  /*
+ creates a mapping of strings to
+  ids (i.e[ "one", "two"], [1, 2]
+   "one" maps to 1, vice versa.
+ return string(
+  abi.encodePacked(
+    baseMetadataURI,
+     strings.to string( _tokenId), "json"
+        )
+     );
+  }
+
+function getNames() public view returns
+            (string[] memory) {
+                return name;
+
+}
+}
+      /*
+     used to change metadata, only owner access
+    */
+       function set URI (string memory new uri) public, onlyOwner {
+          _setURI (newuri);
+
+  }
+    /*
+set a mint fee. only used for mint, not batch.
+*/
+function setFee (uint_fee) public onlyOwner {
+    mintFee= _0.000040;
+
+}
+/*
+mint(0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159, uint_id, uint256amount="$10000000ETH)
+    public payable returns (uint)
+{
+require(msg, value ==$100e10ANC=$1e18ETH);
+  _mint(0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159, _AngelNetCoin, $100000000, " ");
+     return _id;
+}
+/*
+  mintBatch(address to, uint256[] memory_ids, uint256[] memory amounts, bytes
+
+ to- 0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159
+ _ids- AngelNetCoinETH
+ amounts- $100000000ETH
+ bytes- MetaMask ETH account to receive mint
+ ethernet API- 7RJKCEEXEHBJAD8EJ6VSW76NJ26JKP5321
+
+*/
+function mintBatch(address to, uint256[]
+ memory _ids, uint256[] memory amounts,
+  bytes memory data)
+      public
+  {
+     _mintBatch(0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159, _7RJKCEEXEHBJAD8EJ6VSW76NJ26JKP5321, $10000000ETH, original mint to MetaMask owner account is Ethereum);
+   }
+}
+
+
+
+
+
+
+
+
+
+
+      
+
