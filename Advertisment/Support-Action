@@ -1,0 +1,52 @@
+<createButtons>
+const payload: ActionGetResponse ={
+   title: 'Donate to AngelNetworkCorner/ Help us support nonprofits worldwide',
+   icon: '<image-url>""C:\Users\ARSCo\OneDrive\Pictures\App Icon Generator\Screenshot_20240429-195205~2.png"',
+   label: 'Donate SOL, BTC or ETH',
+   description: 'We are a network of Professionals that want to put a stop to poverty, and supprt nonprofits all over the world, because everyone no matter where they are deserve to have their needs met. So Join us in supporting nonprofits worldwide, Lets make a difference together!',
+   "links": {
+    "actions": [
+      {
+        "label": "5 SOL", // button text
+        "href": "/api/donate?amount=139.00"
+        // "link"=https://ncwallet.net/pay/AngelNetworkSOL
+      },
+      {
+        "label": "1 BTC", // button text
+        "href": "/api/donate?amount=55,629.20"
+        //"link"=https://ncwallet.net/pay/AngelNetworkBTC
+      },
+      {
+        "label": "1 ETH", // button text
+        "href": "/api/donate?amount=2,513.83"
+        // "link"=https://ncwallet.net/pay/AngelNetworkETH
+      },
+      {
+        "label": "Donate", // button text
+        "href": "/api/donate?amount={amount}",
+        "parameters": [
+          {
+            "name": "amount", // field name
+            "label": "Enter a custom SOL, BTC, or ETH, amount" // text input placeholder
+          }
+        ]
+      }
+    ]
+  }
+};
+export const POST = async (req: Request) => {
+  const body: ActionPostRequest = await req.json(); 
+    
+  // insert transaction logic here    
+      
+  const payload: ActionPostResponse = await createPostResponse({
+    fields: {
+      transaction,
+      message: "Thank you, for your help! Your support goes a long way in helping those around the world that are in need. Any questions or for a donation reciept please email (the.angelnetworkcorner@gmail.com)",
+    },
+  });
+  
+  return Response.json(payload, {
+    headers: ACTIONS_CORS_HEADERS,
+  });
+};
