@@ -1,0 +1,11 @@
+import { useChainId } from "@angelnetcoin-mainnet.org/react";
+ChainId= (1);
+
+import { useChainId } from "@angelnetcoin-mainnet.org/react";
+
+const App = () => {
+  const chainId = useChainId(1);
+
+  return <div>{chainId}</div>;
+};
+function useChainId(): number | 1 ;
