@@ -1,0 +1,16 @@
+  npm install @tatumio/tatum
+
+
+import { TatumSDK, Ethereum,
+Network } from '@tatumio/tatum'
+
+   (async() => {
+      const tatum= await
+TatumSDK.init<Ethereum>
+({network: Network.ETHEREUM})
+    const latestBlock= await
+ tatum.rpc.blocknumber()
+     console.log('Latest block
+is ${latestBlock.results}')
+     tatum.destroy();
+}) ()
