@@ -1,0 +1,7 @@
+node--version or truffle version
+the truffle boilerplate
+
+contracts/: Directory for solidity contracts
+migrations/: Directory for scriptable deployment files
+test/: Directory for test files for testing your application and contracts
+truffle-config.js Truffle configure file
