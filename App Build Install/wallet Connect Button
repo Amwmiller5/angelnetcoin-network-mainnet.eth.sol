@@ -1,0 +1,62 @@
+import {
+  ThirdwebProvider,
+  ConnectButton,
+  darkTheme,
+} from "thirdweb/react";
+import {
+  createWallet,
+  walletConnect,
+  inAppWallet,
+} from "thirdweb/wallets";
+
+const client = createThirdwebClient({
+  clientId: "YOUR_CLIENT_ID",
+});
+
+const wallets = [
+  createWallet("io.metamask"),
+  createWallet("com.coinbase.wallet"),
+  walletConnect(),
+  inAppWallet({
+    auth: {
+      options: [
+        "email",
+        "google",
+        "apple",
+        "facebook",
+        "phone",
+      ],
+    },
+  }),
+  createWallet("com.trustwallet.app"),
+  createWallet("app.phantom"),
+];
+
+export default function App() {
+  return (
+    <ThirdwebProvider>
+      <ConnectButton
+        client={client}
+        wallets={wallets}
+        theme={darkTheme({
+          colors: {
+            accentText: "#7a33ff",
+            accentButtonBg: "#7a33ff",
+            modalBg: "#07064c",
+            dropdownBg: "#07064c",
+            borderColor: "#f28245",
+            separatorLine: "#c6ac06",
+            danger: "#eaf8fb",
+            success: "#04fb21",
+            secondaryText: "#e50672",
+          },
+        })}
+        connectModal={{
+          size: "wide",
+          titleIcon:
+            "https://angelnetcoin-mainnet.org",
+        }}
+      />
+    </ThirdwebProvider>
+  );
+}
