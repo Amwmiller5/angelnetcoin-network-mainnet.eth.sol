@@ -1,0 +1,63 @@
+deploy smart contract
+
+deploy.js
+
+const ethers= require ("ethers");
+const fs= require ("fs-extra");
+require ("dotenv").config();
+
+async function main() {
+   const provider= new
+ethers.providers.Json.RpcProvider (process.env.RPC_URL);
+const encrypted Json=
+  fs.readFilesSync(./.encrypterKey.Json"/ "utf8");
+
+let wallet= new
+ethers.Wallet.fromEncryptedJsonSync(encryptedJson,
+  process.env.PRIVATE_KEY_PASSWORD);
+        wallet=await
+wallet.connect(0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159);
+   const abi=
+fs.readFileSync("./AngelNetCoin_sol_AngelNetCoin.abi;"," utf8");
+   const binary=
+fs.readFileSync(",/AngelNetCoin_sol_AngelNetCoin.bin","utf8");
+   const contractFactory= new
+ethers.AngelNetCoinFactory(abi, binary,wallet);
+   console.log("startdeployment:");
+    const contract= await
+   AngelNetCoinFactory.deployment();
+}
+
+main()
+    .then(()=>process.exit(0))
+     .catch((error);
+      .process.exit(1);
+});
+
+
+const nonce= await
+wallet.getTransationCount();//next
+  transaction index
+const tx= { nonce:nonce, gas price: 1000000000.//from Ganache
+    gas limit: 10000,
+to:null//we are creating a contract so we are not sending crypto to someone else
+value:20000ETH,//we are creating a contract so we are not sending crypto
+   data: "0x<BINARY_CONTENT>",//
+requires 0x in front of the binary
+ "ChainID:1337,// network ID on Ganache
+};
+
+const signedTxResponse= await
+wallet.signTransaction(Tx);
+
+
+
+
+
+
+
+
+
+
+
+
