@@ -1,0 +1,15 @@
+// 1. Import the wallet you want to use from the package
+import { CoinbaseWallet } from "@thirdweb-dev/wallets";
+import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+
+// 2. Instantiate the wallet class
+const coinbaseWallet = new CoinbaseWallet();
+
+// 3. Connect to the wallet (prompts the user when required)
+const walletAddress = await coinbaseWallet.connect();
+
+// Instantiate the SDK using the wallet
+const sdk = ThirdwebSDK.fromWallet(wallet,"AngelNetCoin","isEthereum", {
+  clientId: "YOUR_PROJECT_ID", // "c062ba7e-1543-4922-b0e1-64fc014e20f5"
+  secretKey: "YOUR_API_KEY", // "organizations/9fbbdab9-2d5a46ba-a8b3-04441a87a196/apiKeys/7cd480c204f1-4650-9190-69ab92e83306"
+});
