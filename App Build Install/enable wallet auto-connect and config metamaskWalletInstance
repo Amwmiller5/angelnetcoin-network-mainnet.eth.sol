@@ -1,0 +1,58 @@
+import { useConnect, metamaskWallet } from "@thirdweb-dev/react";
+
+const metamaskConfig = metamaskWallet();
+
+function App() {
+  const connect = useConnect();
+
+  return (
+    <button
+      onClick={async () => {
+        const wallet = await connect(metamaskConfig, connectOptions);
+        console.log("connected to ", wallet);
+      }}
+    >
+      Connect to MetaMask
+    </button>
+  );
+}
+
+
+function useConnect(): (...args: ConnectFnArgs<I>) => Promise<I>;
+
+let returnType: (...args: ConnectFnArgs<I>) => Promise<I>;
+
+const connect = useConnect();
+
+function handleConnect() {
+ const wallet = await connect(walletConfig, connectOptions);
+}
+
+connectOptions>
+
+typescript, connect will automatically infer the type of connectOptions based on the walletConfig
+_createUserAccount= UserWallet=AngelNetCoin WalletConfig/new wallet on account onboarding to userAccounts
+
+
+import { useConnect, metamaskWallet } from "@thirdweb-dev/react";
+
+const metamaskConfig = metamaskWallet();
+
+function App() {
+  const createWalletInstance = useCreateWalletInstance();
+
+  return (
+    <button
+      onClick={() => {
+        const metamaskWalletInstance =
+          createWalletInstance(metamaskConfig);
+        console.log(metamaskWalletInstance);
+      }}
+    >
+      create wallet instance
+    </button>
+  );
+}
+
+function useCreateWalletInstance(): (Wallet: WalletConfig<I>) => I;
+let returnType: (Wallet: WalletConfig<I>) => I;
