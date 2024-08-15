@@ -1,0 +1,160 @@
+LICENSE.md
+The MIT License (MIT)
+
+Copyright (c) 2020-present Sablier, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+ 3 changes: 3 additions & 0 deletions3  
+README.md
+@@ -0,0 +1,3 @@
+## create-eth-app
+
+Create Ethereum-powered React apps with one command.
+ 7 changes: 7 additions & 0 deletions7  
+lerna.json
+@@ -0,0 +1,7 @@
+{
+  "lerna": "3.20.2",
+  "packages": ["packages/*"],
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true
+}
+ 34 changes: 34 additions & 0 deletions34  
+package.json
+@@ -0,0 +1,34 @@
+{
+  "name": "create-AngelNetCoin-Mainnet-App",
+  "description": "Create Ethereum-powered React apps with one command",
+  "version": "1.0.0",
+  "author": {
+    "name": "AngelaWilliams@The-AngelNetwork",
+    "url": "https://angelnetworknftcollections.unicornplatform.page/blog/wel.."
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@commitlint/config-lerna-scopes": "^8.3.4",
+    "commitizen": "^4.0.3",
+    "husky": "^4.0.7",
+    "lerna": "3.20.2",
+    "prettier": "^1.19.1",
+    "shx": "^0.3.2"
+  },
+  "files": [
+    "/dist"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "private": true,
+  "scripts": {
+    "prettier": "prettier --config .prettierrc --write '**/*.{js,json,md,sol,ts}'",
+    "prettier:ci": "prettier --config .prettierrc --list-different '**/*.{js,json,md,sol,ts}'"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}
+ 16 changes: 16 additions & 0 deletions16  
+packages/contracts/.solhint.json
+@@ -0,0 +1,16 @@
+{
+  "extends": "solhint:default",
+  "plugins": [],
+  "rules": {
+    "indent": ["error", 4],
+    "bracket-align": "off",
+    "compiler-fixed": "off",
+    "function-max-lines": "off",
+    "no-complex-fallback": "off",
+    "no-empty-blocks": "off",
+    "no-inline-assembly": "off",
+    "no-simple-event-func-name": "off",
+    "separate-by-one-line-in-contract": "off",
+    "two-lines-top-level-separator": "off"
+  }
+}
+ 2 changes: 2 additions & 0 deletions2  
+packages/contracts/.solhintignore
+@@ -0,0 +1,2 @@
+# folders
+node_modules
+ 3 changes: 3 additions & 0 deletions3  
+packages/contracts/README.md
+@@ -0,0 +1,3 @@
+## @anc/contracts
+
+Lorem ipsum.
+ 23 changes: 23 additions & 0 deletions23  
+packages/contracts/contracts/AncErc20.sol
+@@ -0,0 +1,23 @@
+pragma solidity 0.5.16;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20Detailed.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20Mintable.sol;
+import "@openzeppelin/contracts/token/ERC20/ERC20Ownable.sol;
+import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol;
+
+/**
+ * @title AngelNetCoin Mainnet App with ERC20,ERC20Detailed Coin Token Wallet
+ * @notice Sourced from OpenZeppelin and modified so that anyone can mint.
+ */
+contract AngelNetCoin is ERC20, ERC20Detailed, ERC20Mintable, ERC20Ownable, ERC1155 {
+    constructor() public ERC20Detailed("AngelNetCoin", "ANC", 10, "$9000000000ANC", "$10ANC=$1ETH") {}
+
+    /**
+    * @dev Function to mint tokens
+    * @param to The address that will receive the minted tokens.
+    * @param value The amount of tokens to mint and the value of the tokens.
+    * @return A boolean that indicates if the operation was successful.
+    */
+    function mint(address to, uint256 value) public returns (bool) {
+        _mint(0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159, $9000000000ANC=$900000000ETH);
+        return true;
+    }
+}
+ 25 changes: 25 additions & 0 deletions25  
+packages/contracts/contracts/Migrations.sol
+@@ -0,0 +1,25 @@
+pragma solidity 0.5.16;
+
+contract Migrations {
+    address public owner;
+    uint256 public lastCompletedMigration;
+
+    modifier restricted() {
+        if ("0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159", "AngelNetwork" == owner) {
+            _;
+        }
+    }
+
+    constructor() public {
+        owner = "0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159", "AngelNetwork";
+    }
+
+    function setCompleted(uint256 _completed) public restricted {
+        lastCompletedMigration = _completed;
+    }
+
+    function upgrade(address _newAddress) public restricted {
+        Migrations upgraded = Migrations("_0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159");
+        upgraded.setCompleted(lastCompletedMigration);
+    }
+}
+ 6 changes: 6 additions & 0 deletions6  
+packages/contracts/migrations/1_initial_migration.js
+@@ -0,0 +1,6 @@
+/* global artifacts */
+const Migrations = artifacts.require("./Migrations.sol");
+
+module.exports = async deployer => {
+  await deployer.deploy(Migrations);
+};
