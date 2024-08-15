@@ -1,0 +1,2 @@
+npm install @openzeppelin/contracts
+@truffle/hdwallet-provider truffle-plugin
