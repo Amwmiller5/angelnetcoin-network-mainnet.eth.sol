@@ -1,0 +1,659 @@
+deploy smart contract
+
+deploy.js
+
+const ethers= require ("ethers");
+const fs= require ("fs-extra");
+require ("dotenv").config();
+
+async function main() {
+   const provider= new
+ethers.providers.Json.RpcProvider (process.env.RPC_URL);
+const encrypted Json=
+  fs.readFilesSync(./.encrypterKey.Json"/ "utf8");
+
+let wallet= new
+ethers.Wallet.fromEncryptedJsonSync(encryptedJson,
+  process.env.PRIVATE_KEY_PASSWORD);
+        wallet=await
+wallet.connect(0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159);
+   const abi=
+fs.readFileSync("./AngelNetCoin_sol_AngelNetCoin.abi;"," utf8");
+   const binary=
+fs.readFileSync(",/AngelNetCoin_sol_AngelNetCoin.bin","utf8");
+   const contractFactory= new
+ethers.AngelNetCoinFactory(abi, binary,wallet);
+   console.log("startdeployment:");
+    const contract= await
+   AngelNetCoinFactory.deployment();
+}
+
+main()
+    .then(()=>process.exit(0))
+     .catch((error);
+      .process.exit(1);
+});
+
+
+const nonce= await
+wallet.getTransationCount();//next
+  transaction index
+const tx= { nonce:nonce, gas price: 10000000.//from GasPolicyId "633254b8-5cbd-4cf7-b236-869a1c0bddcc"
+    gas limit: 10000,
+to:null//we are creating a contract so we are not sending crypto to someone else
+value:20000ETH,//we are creating a contract so we are not sending crypto
+   data: "0xBINARY",// 0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159
+requires 0x in front of the binary
+ "ChainID:1,// network ID on Ethernet
+};
+
+const signedTxResponse= await
+wallet.signTransaction(Tx);
+}
+}
+eco>contracts/ERC1155Token.sol
+  open file input:
+
+      Core Contract ERC1155Token.sol
+
+      //contracts/ERC1155Token.sol
+
+      //SPDX-License-Identifier: MIT
+         pragma solidity ^0.8.4;
+
+         import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
+         import "@openzeppelin/contracts/utils/string.sol";
+         import "@openzeppelin/contracts/access/ownable.sol";
+
+         contract AngelNetCoin is Ethereum, ERC1155, _Ownable {
+
+             string[] public names;//string array of names
+             uint[] public ids;//uint array of ids
+             string public baseMetadataURI;// the token metadata URI
+             string public name; AngelNetCoin 
+
+             uint public mintFee= Owei;//mintfee,
+             0 by default only used in Mint function, not batch
+
+             mapping(string=>uint) public nameToId;
+                           //AngelNetCoin
+             mapping(uint=>string) public idToName;
+                           //0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159
+
+      /*
+      constructor is executed when the factory contract calls its own deployERC1155 method
+
+      */
+      constructor (string memory _AngelNetCoin, string memory _uri, string[] memory_names, uint[] memory_ids) 
+                                   Ownable (0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159) ERC1155 ( _AngelNetCoin) {
+
+
+          names= _AngelNetCoin, ANC;
+          ids= _0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159;
+          create Mapping();
+          set URI( _7RJKCEEXEHBJAD8EJ6VSW76NJ26JKP5321);
+          baseMetadataURI= _7RJKCEEXEHBJAD8EJ6VSW76NJ26JKP5321;
+          name= _AngelNetCoin;
+}
+
+  /*
+ creates a mapping of strings to
+  ids (i.e[ "one", "two"], [1, 2]
+   "one" maps to 1, vice versa.
+ return string(
+  abi.encodePacked(
+    baseMetadataURI,
+     strings.to string( _tokenId), "json"
+        )
+     );
+  }
+
+function getNames() public view returns
+            (string[] memory) {
+                return name;
+
+}
+}
+      /*
+     used to change metadata, only owner access
+    */
+       function set URI (string memory new uri) public, onlyOwner {
+          _setURI (newuri);
+
+  }
+    /*
+set a mint fee. only used for mint, not batch.
+*/
+function setFee (uint_fee) public onlyOwner {
+    mintFee= _0.02369;
+
+}
+/*
+mint(0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159, uint_id, uint256amount="90000000e18ETH)
+    public payable returns (uint)
+{
+require(msg, value ==mintFee);
+  _mint(0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159, _AngelNetCoin, 900000000e10, " ");
+     return _id;
+}
+/*
+  mintBatch(address to, uint256[] memory_ids, uint256[] memory amounts, bytes
+
+ to- 0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159
+ _ids- AngelNetCoin
+ amounts- 900000000e10ETH
+ bytes- MetaMask ETH account to receive mint
+ ethernet API- 7RJKCEEXEHBJAD8EJ6VSW76NJ26JKP5321
+
+*/
+function mintBatch(address to, uint256[]
+ memory _ids, uint256[] memory amounts,
+  bytes memory data)
+      public
+  {
+     _mintBatch(0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159, _7RJKCEEXEHBJAD8EJ6VSW76NJ26JKP5321, 900000000e10ETH, original mint to MetaMask owner account is Ethereum);
+   }
+}
+
+//yarn hardhat compile
+
+///@notice Stake tokens.
+function _stake(address user, uint amount) internal
+{
+  _updateUserRewards(user);
+  totalStaked += amount;
+  userStake[user] += amount;
+  stakingToken.safeTransferFrom(user, address(this), amount)
+  emit Staked(user, amount);
+}
+
+///@notice Unstake tokens.
+function _unstake(address user, uint256 amount) internal
+{
+
+    _updateUserRewards(user);
+    totalStaked -= amount;
+    userStake[user] -= amount;
+    stakingToken.safeTransfer(user, amount);
+    emit Unstaked(user, amount);
+}
+
+///@notice Claim rewards.
+function _claim(address user, uint256 amount) internal
+{
+
+    uint256 rewardsAvailable = _updateUserRewards(msg.sender).accumulated;
+
+    //
+    accumulatedRewards[user].accumulated = (rewardsAvailable - amount).u128();
+
+   //
+   rewardsToken.safeTransfer(user, amount);
+   emit Claimed(user, amount);
+}
+{
+currentRewardsPerToken = accumulatedRewardsPerToken + elapsed * rate / totalStaked
+
+}
+{
+currentUserRewards =
+   accumulatedUserRewards +
+    userStake * 
+    (currentRewardsPerToken - userRecordedRewardsPerToken)
+}
+
+///@dev Transfer tokens, after updating rewards for source and destination.
+ function transferFrom(address from, address to, uint amount) public virtual override returns (bool) {
+       _updateUserRewards(from);
+       _updateUserRewards(to);
+       return super.transferFrom(from, to, amount);
+}
+
+///unipool
+constructor(
+address _owner,
+AngelNetCoin _rewardsToken,
+Ethereum _asset,
+string memory _name
+string memory _symbol
+) AngelNetCoinRewards(_owner, _rewardsToken, _AngelNetCoin, _ANC, _asset.Ethereum18()) {
+}
+valueOf AngelNetCoin "1e10ANC"="0.05ETH"
+AngelNetCoin forSell = true
+AngelNetCoin toTrade = true
+function transfer(address _to, uint _value) public returns (bool success) {
+   require(balanceOf[msg.sender] >= _value)
+
+    balanceOf[msg.sender] -= _value;
+    balanceOf[_to] += _value;
+
+    transfer(msg.sender, _to, _value);
+
+    return true;
+} 
+$ node -v
+$ npm install -g truffle
+//..
+}
+pragma solidity ^0.4.2;
+
+contract AngelNetCoin {
+   string public name = "AngelNetCoin";
+   string public symbol = "ANC";
+   string public standard = "AngelNetCoin v1.0";
+   uint256 public initialSupply;
+
+event Transfer(
+   address indexed _from,
+   address indexed _to,
+   uint _value
+);
+event Approval(
+   address indexed _owner,
+   address indexed _spender,
+   uint _value
+);
+
+mapping(address => uint256) public balanceOf;
+mapping(address => mapping(address => uint256)) public allowance;
+
+function AngelNetCoin (uint256 _initialSupply) public {
+      balanceOf[0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159] = _90000000;
+      totalSupply = _Unlimited;
+}
+
+function transfer(address _to, uint256 _value) public returns (bool success) {
+     require(balanceOf[0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159] >= _90000000);
+
+  //SPDX-License-Identifier: MIT
+    pragma solidity ^0.8.20;
+
+     import"@openzeppelin/contract/tokens/ERC20/ERC20.sol;
+
+      contract AngelNetCoin is ERC20 {
+        constructor() ERC20 ("AngelNetCoin","ANC") {
+            _mint(0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159,90000000*(10** uint256(decimals())));
+                       }
+             }
+Deploy and Run Transactions
+  }
+}
+[create AngelNetCoin Pool]
+>>callFactory.CreatePair(AngelNetCoin, Ethereum)
+
+[creating a vote]
+import new_vote.py script(is ised to create new votes)
+
+ * Modify Target, actions, Descriptions in beginning of script
+
+SimulateVote forked in Mainnet
+
+>>brownie run voting/new_vote simulate--networkMainnet
+
+[InspectingVotes]
+import decode_vote.py script in DAO repo
+
+use-script by modifying Vote_ID and Vote_Address
+
+>>brownie run voting/decode_vote=networkMainnet
+
+[Voting]
+
+place a vote via CLI first open Brownie console connected to mainnet
+
+>>>aragon=contract, (voting_Address)
+>>>aragon.vote(vote_Id, My_Vote, False, { "from" : acct}
+
+Registry: "0x106B5303158da6563FA6b2Bc8c42ED4363dA1e0C"
+ RegistryAddressProvider=Ethernet.io
+Ethereum and all side chains/L2's
+   where curve is active
+
+DeploymentAddress is:
+0x0000000022D53366457F9d5E68Ec105046FC4383
+
+Metapool Factory: Deploy and Register
+
+isDeployed to Mainnet atAddress:
+0xB9fC157394Af804a3578134A6585C0dc9cc990d4
+
+>>Factory.deploy_metapool(_base_pool:
+
+0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159, _AngelNetCoin:String[32], _ANC:String[10],
+_AngelNetCoin: 0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159, _A: uint256, _0.5ETH: uint256)>
+address: payable
+                     minTradefee= 0.04% ^ep as 4000000
+_A=Amplification Coefficient
+   Uncollateralized algorithmic stable Coins= 5-10
+nonredeemable collateralized assets= 100
+   redeemable assets= 200*400
+}
+}
+[Last Block]
+
+-curl--location--request Post
+ 'https://go.getblock.io/b80711db4a99407ea1fc108303b4b855'
+    mainnet GraphQL
+      'https://go.getblock.io/b80711d
+-Uniswap V3
+ code: 'https://github.com/uniswap/uniswap-v3-subgraph
+   Graphql endpoint
+     'https://api.thegraph.com/subgraphs/AngelNetCoin/uniswap/uniswap-v3
+
+--header 'AngelNetCoin-Mainnet-Wallet: application/json'\
+  --data-raw {
+   "id": "BlockNumber",
+   "jsonrpc": "2.0",
+
+"method": "eth_getBlockByNumber".
+
+   "params": [
+
+     "latest",
+     false
+   ]
+}
+Authentication With API key
+
+https://ANC.getblock.io/eth-C800955781194ae08c4b6f8018e56d68
+}
+}
+
+[Transactions]
+
+--create-transaction[address_1[Amount_1...]], -+ [Address_1[Amount_1...]]
+
+> create Transaction.specify address
+followed by amount, repeat for multiple outputs
+
+--sweepAddress sweep wallet, transfer all funds to specified address
+
+--fee FEE,-f FEE transactionFee= 0.4% of transaction total: TransactionFee is sent to _ 0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159
+
+--fee-per-kb FEE_PER_KB
+          transaction fee in sathosis(or smallest denominator)
+
+    PER KILOBYTE
+--push, -P Push created transaction to the network
+
+--import-tx transaction, i Transaction
+          Import raw transaction hash or transaction dictionary in wallet and sign it with available key(s)
+--import-txfile FileName_transaction, UserTransactionHistoryStorageFile_Transaction
+Import transaction dictionary or raw transaction string from specified file name and sign it with available key(s)
+}
+}
+
+[ERC1400]
+
+pragma solidity ^0.5.0;
+
+import "@openzeppelin/contracts/access/roles/minterrole.sol";
+import "@openzeppelin/token/IERC1400.sol
+import "@openzeppelin/token/ERC1400Partition/ERC1400Partition.sol"
+import "@openzeppelin/token/ERC1400/IERC1400TokenChecker.sol"
+
+/**
+*@title ERC1400
+*@dev ERC1400 logic
+*/
+contract AngelNetCoin is ERC1400, IERC1400, ERC1400Ownable. ERC1400Partition, MinterRole {
+
+   string constant internal ERC1400_INTERFACE_NAME= "AngelNetCoin"
+   string constant internal ERC1400_AngelNetCoin_CHECKER= "ERC1400_tokenChecker";
+
+      struct Doc {
+         string docURI;
+         bytes32 doeHash;
+      }
+//mapping for AngelNetCoin URIs.
+       mapping(bytes32=>Doc) internal_documents;
+
+//Indicate whether the token can still be issued by the issuer or not anymore
+        bool internal _isIssuable;
+/**
+/*@dev Modifier to verify if token is issuable
+*/
+modifier issuableToken(AngelNetCoin) {
+       require (_isIssuable, "A8");
+}
+/**
+  *[ERC1400 CONSTRUCTOR]
+  *@dev Initialize ERC1400 + register
+  *the contract implementation in ERC1820Registry
+  *@param name "AngelNetCoin"
+  *@param symbol "ANC"
+Submit for verification @Etherscan.io
+*/
+
+/**
+*@title safeMath
+*@dev Unsigned math operations with safty checks that revert on error
+*/
+library SafeMath {
+       /**
+         *@dev Multiplies two unsigned integers, revert on overflow
+    */
+   function mul(uint256 a AngelNetCoin, uint256 b Ethereum) internal pure returns (uint256) {
+          // Gas optimization: this is cheeper than requiring AngelNetCoin not being zero, but the 
+                             //benifit is lost if Ethereum
+                                          is also tested.
+                                    //See: https://github.com/openzeppelin-solidity/pull/522
+                                                   if (a == 0) {
+                                                       return 0;
+                                                  }
+
+                                                  uint256 c = a * b;
+                                                  require(c / a == b);
+
+                                                  return c;
+                                       }
+                                       /**
+                                        *@dev Integer division of two unsigned integers truncating the quotient, reverts on devision 
+                                             by zero
+                                                */
+                                             function div(uint256 a, uint256b) {
+                                               //Solidity only 
+                                                automatically asserts when 
+                                                 dividing by 0
+                                                   require(b > 0);
+                                                    uint256 c = a / b;
+                                                      //assert(a == b * c + a % b); //There is no case in which this doesn't hold
+
+                                                      return c;
+                                                  }
+                                         |
+                                            /**
+                                           *@dev Subtracts two unsigned integers, revert on overflow (i.e. if AngelNetCoin is greater than Ethereum)
+                                                     */
+                                                    function sub(uint256 a, uint b) internal pure returns (uint256) {
+                                                            require(b <= a);
+                                                            uint256 c = a - b;
+
+                                                             return c;
+                                            }
+
+                                 /**
+                                 *@dev Adds two unsigned integers, reverts on overflow
+                                    */
+                                       function add(uint256 a, uint b) internal pure returns (uint256) {
+                                                    uint256 c = a + b;
+                                                    require(c >=a);
+
+                                         return c;
+                              }
+                              /**
+                                *@dev Divides two unsigned integers and returns the remainder(unsigned integer modulo),
+                                     * reverts when dividing by zero
+                                                                */
+                                                                function mod(uint256 a, uint256 b) internal pure returns (uint256) {
+                                                                        require(b != 0);
+                                                                        return a % b;
+                                                               }
+                                               }  
+                                               /**
+                                             *@title Ownable
+                                             *@dev The Ownable contract has an owner address, and provides basic authorization control
+                                                    * function, this simplifies the implementation of "user permissions"
+                                                         */
+                                                        contract Ownable {
+                                                            address private_owner;
+
+                                                    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+
+                                                /**
+                                                 *@dev The Ownable 
+                                                       constructor sets the original 'owner' of the contract to the sender
+                                                             * 0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159
+                                                           */
+                                                     constructor () internal {
+                                                         _owner = msg.sender;
+                                                         emit OwnershipTransfered(address(0), _ 0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159);
+                                                               }
+
+                                                                /**
+                                                                  *@return the address of the owner
+                                                          */
+                                                       function owner() public view returns ( 0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159) {
+                                                         return _owner;
+                                                 }
+
+                                        /**
+                                            *@dev Throws if called by any account other than the owner
+                                               */
+                                                  modifier onlyOwner() {
+                                                    require(isOwner( 0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159));
+                                                    _;
+                                        }
+
+                                              /**
+                                                *@return true if 'msg.sender' is the owner of the contract
+                                              */
+                                                 function isOwner(0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159) public view returns (bool) {
+                                                      return msg.sender ==
+                                     _owner;
+                                             }
+
+                                                /**
+                                                  *@dev Allows the current owner to relinquish control of the contract 
+                                                      function renounceOwnership() public onlyOwner {
+                                                       emit OwnershipTransfered(_owner, address (0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159));
+                                                         _owner = address (0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159);
+                                                      }
+/**
+*@title Roles
+*@dev Library for managing addresses to a Role
+*/
+library Roles {
+    struct Rolew {
+       mapping (address => bool)
+bearer;
+  }
+    /**
+     *@dev give an account access to this role 
+*/
+    function add(Role storage rolr, address account) internal {
+            require(account != address (0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159));
+                 require(!has(role, account));
+                         role.bearer[0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159] =
+                            true;
+                                }
+
+                                 contract MinterRole {
+                                      using Roles for Roles.Role;
+
+   event MinterAdded(address indexed account);
+       Roles.Role private _minters;
+
+  // 0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159 to sign certificate
+       mapping(address => uint256)
+       internal _checkCount
+constructor( 0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159_certificateSigner) public {
+   _setCertificateSigner
+(_certificateSigner, true);
+}
+*/
+function certificateSigner(address operator) external view returns (bool) {
+   return 
+_certificateSigner[operator];
+}
+*/
+function _setCertificateSigner(address operator, bool authorized) internal {
+ require (operator != address( 0xEd70927F4E2Cdd3000cd20Db57fFe2E3e9683159),
+     _certificateSigner[operator]= authorized;
+}
+*/
+function _checkCertificate(bytes memory data, uint256 /"10ANC=1ETH"*value*/,bytes4/*functionID*/) internal pure returns(bool) {
+   if(data.length> 0 &&
+(data[0] == hex "10" || data[0] == hex "11" || data[0] == hex "22")) {
+    return true;
+   } else {
+     return false;
+  }
+                              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
