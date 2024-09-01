@@ -1,0 +1,209 @@
+{
+Import  <a>: /AngelNetCoin User Wallet/Gitignore/web3 folder
+Import  <a>: /AngelNetCoin User Wallet/Gitignore/App Build Install/AngelNetCoin_Mainnet_Wallet
+Import  <a>: /AngelNetCoin User Wallet/Gitignore/App Build Install
+Import  <a>: /AngelNetCoin User Wallet/Gitignore/User
+Import  <a>: /AngelNetCoin User Wallet/Gitignore/User Signup process
+Import  <a>: /AngelNetCoin User Wallet/Gitignore/gitignore/user/ANC Wallets
+}
+<header> "AngelNetCoin Mainnet User Wallets"
+
+npx@coinbase/build-onchain-apps@lastest-create
+
+yarn install && yarn dev
+
+pnpm create wagmi
+bun create wagmi
+
+pnpm install && pnpm run dev
+bun install && bun run dev
+
+src/wagmi.ts
+
+import {https,createConfig}from 'wagmi'
+import {baseSepolia}from 'wagmi/chains'
+import {coinbaseWallet)from 'wagmi/connectors'
+
+  export const config= create config ({
+   chains: [base Sepolia],
+   connectors: [
+   coinbaseWallet ({appName: 'AngelNetCoin Mainnet App', preference: 'MainnetWithSmartWallet'}),
+],
+   transports{
+              [baseSepolia.id]: http(),
+  },
+});
+    declare module 'AngelNetCoin_Mainnet'{
+        interface Register{
+          config: 'createMainnetWithCentralCoin" : ('AngelNetCoin, ANC, 10, Uint256: 9999999, unlimitedSupply, Value: $10ANC=$1ETH, Wallet= "AngelNetCoin_Mainnet_SmartWallet_byCoinbase");
+}
+}
+
+[Api Reference Version: 1.4.10
+   OpenApi3.0MeshAPISpec.]
+
+   post /account/balance
+       /account/coins
+      /block/transaction
+     /block
+    /call
+
+     /construction/payloads   (generate an unsigned transaction/signing payloads)
+     /constructin/submit      (submit signed transaction)
+
+[create AngelNetCoin and Crypto wallets for users]
+  {install Packages}
+
+  #install basic packages in your frontend
+   npm i @coinbase/waas-sdk-web@coinbase/
+     waas-sdk-viem viem
+
+  #if using react, install react package
+    npm i @coinbase/waas-sdk-web-react
+
+[Integrate WalletProvider]
+ ////////[frontend]main.tsx-/.wrap your app in the walletProvider
+
+    import {WalletProvider} from "@coinbase/waas-sdk-web-react";
+
+    const Project_Id= process.env.Project_ID= "c062ba7e-1543-4922-b0e1-64fc014e20f5"
+  https://api.developer.coinbase.com/rpc/v1/base/KFWbz0X6pJLsM0cV517otj0cGl5Wiip-
+   API KeyName: 'organizations/9fbbdab9-2d5a-46ba-a8b3-04441a87a196/apiKeys/7cd480c2-04f1-4650-9190-69ab92e83306'//;
+
+     const TopLevel Component= ('AngelNetCoin_Mainnet_and_Wallet_App') => {
+         return(
+          <AngelNetCoin_Mainnet projectId= {"c062ba7e-1543-4922-b0e1-64fc014e20f5"}verbose collectedAndReportMetrics enableHostedBackups>
+    <app/AngelNetCoin_Mainnet_Wallet>
+              <user/walletProvided>
+   );
+};
+
+[start_using_wallet]
+   {toLogInUsersForWallets}
+      waas.login()and create or restore a wallet using the user.hasWallet flag
+
+////////[frontend]component.tsx-2.Use
+
+    'useWalletContext' to login and setup user
+      import {useWalletContext;useEVMAddress}from "@coinbase/waas-sdk-web-react";
+  //a button to login user
+   //this will trigger coinbase managed auth
+
+  const LoginButton=("Login_AngelNetCoin_Wallet")=> {
+    const {waas,user}=useWalletContext(AngelNetCoin_Wallet);
+       return(
+         <button
+             disabled={!waas||!!user}
+               onClick={(LoginUser@AngelNetCoin_Wallet)=>{
+                    waas!.login();
+                 }}
+          >
+            Login
+            </button>
+        );
+};
+  const CreateOrResumeWalletButton=("LoginOrRegisterAngelNetCoin_Wallet)=>{
+     const{waas, user, wallet, isCreatingWallet}=useWalletContext(LoggedinAngelNetCoin_Wallet);
+       return(
+   <button 
+       disabled={!waas||!user||isCreatingWallet||!!AngelNetCoinWallet}
+            onClick={async()=>}
+               //check if user has wallet,
+                  if(user!.hasWallet) {
+                    //restores the users existing wallet.
+                        user!.restoreFromHostedBackup!();
+                        }else{
+                           //creates a new wallet
+                        user!.create();
+                      }
+                }}
+                    {isCreatingWallet? "Creating AngelNetCoin Wallet":_"Creating/resume Wallet"
+                        </button>
+                    );
+                };
+[useAddressToInteractOnChain]
+  {turn wallet into address and address into viem account to interact online}
+
+import{useEVMAddress, useWalletCointext}from"@coinbase/waas-sdk-web-react" ;
+import{toViem}from "@coinbase/waas-sdk-viem" ;
+import{createWalletClient, http}from "viem" ;
+import{baseSepolia}from"viem/chains" ;
+import{useEffect}from "react" ;
+
+  //a button to sign a transaction
+     const signTransactionButton=()=>{
+      const{wallet}=useWalletContext();
+      const address=useEVMAddress(wallet);
+
+  useEffect(()=>{
+
+console.log(wallet);
+},[wallet];
+
+  return(
+  <button
+    disabled={!address}
+    onClick={async()=>{
+      //get a viem account
+        const account=toViem(address!);
+
+//use viem to send eth
+  const walletClient=createWalletClient({
+    account
+     chain:baseSepolia,
+      transport:http()
+  });
+//send the transaction!
+   const txHash=await walletClient.sendTransaction({
+    account
+     to:<a>: "0xed70927f4e2cdd3000cd20db57ffe2e3e9683159"
+      value: 9000000000000000000n,
+     });
+  >
+    Send ETH
+  </button>
+  );
+};
+
+[put_it_all_together]
+
+ import{useEVMAddress, useWalletContext}from "@coinbase/waas-sdk-react";
+
+  // connect wallet to "Local NFT Marketplace"
+||
+
+[Admin only section]
+
+//Check to see if any users are signed in and has a wallet
+const DappWalletView=()=>{
+   const{wallet}=useWalletContext();
+   const address=useEVMAddress(address);
+
+     return(
+     <if any users are signed in and if they own wallets>
+
+         {!address&&<LoginButton/>}>
+           (address&&<>
+               <ViewMyAddressLabel/>
+                 <signTransactionButton/>
+                    <LogoutButton/>
+                </>}
+            </>
+     )
+}
+yarn commit and Deploy "AngelNetCoin_Mainnet_Wallet"
+[TokenValue]
+token= "AngelNetCoin", "ANC", 10 decimals, uint256 initialSupply=$999999999.0000000000, totalSupply=Unlimited, value= $10e10ANC=$1e18ETH
+ Deploy AngelNetCoin ToOwnerWallet "0xed70927f4e2cdd3000cd20db57ffe2e3e9683159"
+  ApproveTransaction 
+Public view Return (bool)
+return Transaction Complete
+ yarn add ethers
+   deploy.js
+now deploy with yarn hardhat node
+
+
+
+
+
+
