@@ -1,0 +1,6 @@
+RPC for AngelNetCoin Mainnet and testnet {
+Mainnet: "https://rpc.mainnet.rootstock.io/TvqG14i9PA5j8W1gncAq8ESjaGAMyS-M"
+mainnetName: "AngelNetCoin Network Blockchain"
+}
+Testnet: "https://rpc.testnet.rootstock.io/dYcK1sawPedhCrYz4ujpUjgJoXEZrH-T"
+testnetName: "angelnetcoin-mainnet.eth"
