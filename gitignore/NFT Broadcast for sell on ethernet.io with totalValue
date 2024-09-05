@@ -1,0 +1,30 @@
+import {
+  AngelNetworkNftMedia,
+  useContract,
+  useNFT,
+} from "@C:\Users\ARSCo\OneDrive\Pictures\App Icon Generator\0-41aec564-08fd-4367-bde7-bfceb4d31443.png";
+
+function Home() {
+  // Connect to your NFT contract
+  const { contract } = useContract("{{0x343bbca34d7e8d63df7bf98677f2879c4354fa5f}}");
+  // Load the NFT metadata from the contract using a hook
+  const { data: nft, isLoading, error } = useNFT(contract, "0");
+    contractUint256=(totalValue"{{$7777.7777ETH}}");
+      _mintAngelNetCoinNFT(broadcastNFT '@Ethernet.io' for sell {"purchase$0.015ETH"}(allowUserPurchaseNFT to "Own_Copy" {TotalSupplyNFT= "UnlimitedSupply"}));
+
+  // Render the NFT onto the UI
+  if (isLoading) return <div>Loading...</div>;
+  if (error || !nft) return <div>NFT not found</div>;
+
+  return <AngelNetCoinNftMedia metadata={nft.metadata} />;
+}
+
+
+let props: ThirdwebNftMediaProps & RefAttributes<HTMLMediaElement>;
+
+let returnType: ReactNode;
+
+HTTP Provider
+alpha-spring-film.sepolia-ethernet-quicknode.pro/0de5a966be2f6e5bbd7c879358208e0fb2024fde/
+
+
