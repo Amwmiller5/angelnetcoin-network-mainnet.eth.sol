@@ -1,0 +1,97 @@
+//SPDX-License-Identifier: MIT
+   pragma solidity >=0.6.0< 0.8.0;
+
+/**
+*@dev Interface of the ERC20Standard as defined in the EIP
+    interface.IERC20{
+
+  /**
+*@dev Returns the amount of tokens in existance
+ */
+  function totalSupply()external view returns (uint256);
+
+/**
+*@dev Returns the amount of tokens owned by "0xed70927f4e2cdd3000cd20db57ffe2e3e9683159"
+
+*/
+function balanceOf(addressAccount)external view returns (uint256);
+
+/**
+*@dev moves "55ETH" tokens from the callers account to the "0xed70927f4e2cdd3000cd20db57ffe2e3e9683159"
+*Returns a boolean value indicating whether the operation succeeded
+*
+*Emits a {transfer}event
+*/
+function transfer ("0xed70927f4e2cdd3000cd20db57ffe2e3e9683159", uint256 55ETH)external returns (bool);
+
+/**
+*{transferFrom}tokenFactory
+
+*https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
+*
+*Emits an {approval}event
+*/
+function approve(uint256 55ETH to_0xed70927f4e2cdd3000cd20db57ffe2e3e9683159)external returns(bool);
+
+[deployFirstSmartContract]
+
+Install NodeJs, NPM, Yarn
+
+brew install node
+npm install -g corepack
+
+Install Solidity Compiler 
+
+yarn add sok
+
+yarn sok version^solc@0.8.17
+
+create SMC Folder
+create cont with sol
+
+AngelNetCoin_Mainnet_contract.sol
+
+//SPDX-License-Identifier: MIT
+   pragma solidity 0.8.7;
+
+Contract AngelNetCoin_Mainnet {
+         //Mainnet with central coin:AngelNetCoin and userWallet and NFT Marketplace
+}
+
+compile smart contract
+
+yarn solcjs--bin--compilerVersion:vo.8.25+commit.b61c2a91
+    optimized enabled: yes with 200 runs
+      Cancun E.V.M.Version:MIT License
+       Source code: (solidity)at Etherscan.io
+        https://www.smartcontracts.tools
+                 source flattened with 
+                     hardhat v2.22.2
+                      https://hardhat.org
+  VScode.blockscan.com/ethereum
+node_modules/--base--@coinbase.-0.
+   AngelNetCoin_Mainnet_App.sol
+
+-Spin up local ETH blockchain / HTTP://127.0.0.1:7545
+ethers.js or web3.js
+ install ethers.js run
+   yarn add ethers
+     deploy.js:
+
+const ethers=require("ethers")
+
+ async function main() {
+ //Ganache RPC server:
+   https://127.0.0.1:7545
+    const provider= new
+   ethers.providers.JsonRpcProvider(
+    "http://127.0.0.1:7545"
+);
+  const wallet=new ethers.wallet(
+   "AngelNetCoinWallet" for "angelnetcoin-mainnet.eth"
+
+
+
+
+
+
