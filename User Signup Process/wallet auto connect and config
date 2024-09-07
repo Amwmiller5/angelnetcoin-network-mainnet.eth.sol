@@ -82,10 +82,17 @@ import { getAddressFromMessage } from '@web3modal/siwe'
 const address = getAddressFromMessage(message)
 }
 }
-
+[Ai Support Bot]
 {
-
-
+<script
+  data-account-id="{accountId}"
+  data-chat-id="{chatId}"
+  data-settings='{"openChatButton":{"background":"#237afc","text":"#ffffff"}}'
+  crossorigin="*"
+  src="https://app.chatsy.ai/resources/script.js?cb={cb}">
+</script>
+}
+yarn commit and yarn deploy
 
 
 
