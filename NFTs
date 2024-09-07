@@ -1,0 +1,35 @@
+import {
+  useContract,
+  useMintNFTSupply,
+  Web3Button,
+} from "@thirdweb-dev/react";
+
+const contractAddress = "{{contract_address}}";
+const walletAddress = "{{wallet_address}}";
+const tokenId = "{{token_id}}";
+const additionalSupply = "{{additional_supply}}";
+
+function App() {
+  // Contract must be an ERC-1155 contract that implements the ERC1155Mintable interface
+  const { contract } = useContract(contractAddress);
+  const {
+    mutateAsync: mintNftSupply,
+    isLoading,
+    error,
+  } = useMintNFTSupply(contract);
+
+  return (
+    <Web3Button
+      contractAddress={contractAddress}
+      action={() =>
+        mintNftSupply({
+          additionalSupply: additionalSupply, // 777777
+          to: walletAddress, // Address to mint to
+          tokenId: tokenId, // Token ID to add supply to
+        })
+      }
+    >
+      Mint NFT Supply
+    </Web3Button>
+  );
+}
