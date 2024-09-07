@@ -1,0 +1,9 @@
+<script
+  data-account-id="{accountId}"
+  data-chat-id="{chatId}"
+  data-settings='{"openChatButton":{"background":"#237afc","text":"#ffffff"}}'
+  crossorigin="*"
+  src="https://app.chatsy.ai/resources/script.js?cb={cb}">
+</script>
+//Add to all pages for customer support
+yarn commit and yarn deploy
