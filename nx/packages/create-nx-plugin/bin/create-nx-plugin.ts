@@ -40,6 +40,18 @@ export const yargsDecorator = {
 
 const nxVersion = require('../package.json').version;
 
+/**
+ * @description Prompts the user for a plugin name if not provided as an argument,
+ * returning the result after validation and sanitization. It handles empty input by
+ * requiring a non-empty value.
+ *
+ * @param {CreateNxPluginArguments} parsedArgs - Used to hold parsed arguments from
+ * CLI input.
+ *
+ * @returns {Promise<string>} A string that represents the name of an Nx plugin. The
+ * function `determineCreatePackageName` also returns a string representing the package
+ * name for the CLI.
+ */
 async function determinePluginName(
   parsedArgs: CreateNxPluginArguments
 ): Promise<string> {
@@ -168,10 +180,15 @@ async function main(parsedArgs: yargs.Arguments<CreateNxPluginArguments>) {
 }
 
 /**
- * This function is used to normalize the arguments passed to the command.
- * It would:
- * - normalize the preset.
- * @param argv user arguments
+ * @description Normalizes arguments passed to a yargs parser by determining various
+ * plugin-related values and injecting them into the parsed arguments object, catching
+ * any errors that occur during this process and exiting with an error code if necessary.
+ *
+ * @param {yargs.Arguments<CreateNxPluginArguments>} argv - An object containing
+ * parsed command-line arguments.
+ *
+ * @returns {Promise<void>} An empty promise that resolves to undefined, indicating
+ * successful execution of the code within it.
  */
 async function normalizeArgsMiddleware(
   argv: yargs.Arguments<CreateNxPluginArguments>

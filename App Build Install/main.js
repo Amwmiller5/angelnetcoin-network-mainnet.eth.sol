@@ -10,6 +10,11 @@ Author: GrayGrids
         window.setTimeout(fadeout, 500);
     }
 
+    /**
+     * @description Animates the opacity of an HTML element with class `.preloader` to
+     * zero, making it invisible at the end, then hides it from view by setting its display
+     * style to `'none'`.
+     */
     function fadeout() {
         document.querySelector('.preloader').style.opacity = '0';
         document.querySelector('.preloader').style.display = 'none';
@@ -47,6 +52,7 @@ Author: GrayGrids
     //===== mobile-menu-btn
     let navbarToggler = document.querySelector(".mobile-menu-btn");
     navbarToggler.addEventListener('click', function () {
+        // Handles button clicks by toggling a CSS class on the button element.
         navbarToggler.classList.toggle("active");
     });
 
