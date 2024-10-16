@@ -10,3 +10,7 @@ $ ./run.cmd
 Using your self-hosted runner
 # Use this YAML in your workflow file for each job
 runs-on: self-hosted
+httpProxy: 
+              - name: Identity-Aware Proxy Header Check
+                uses: StephenCathcart/iap-header-check@v1.1
+            
