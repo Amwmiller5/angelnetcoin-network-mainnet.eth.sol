@@ -4,3 +4,4 @@ apiKey= organizations/9fbbdab9-2d5a-46ba-a8b3-04441a87a196/apiKeys/7cd480c2-04f1
 
  {smartWallets for Users}
 npx@coinbase/build-onchain-apps@latestCreate
+Clone:"https://github.com/coinbase/coinbase-wallet-sdk.git"
