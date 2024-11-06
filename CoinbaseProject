@@ -1,0 +1,5 @@
+git clone https://github.com/coinbase/onchain-app-template.git
+Merge with openbankprojectApp_project
+
+yarn Commit & DeployToURL: (
+URL="https://www.angelnetcoin-mainnet.net")
